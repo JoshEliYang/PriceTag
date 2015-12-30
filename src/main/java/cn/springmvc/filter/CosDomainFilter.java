@@ -10,6 +10,9 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class CosDomainFilter implements Filter{
 
 	public void destroy() {
@@ -19,6 +22,7 @@ public class CosDomainFilter implements Filter{
 
 	public void doFilter(ServletRequest req, ServletResponse res,
 			FilterChain chain) throws IOException, ServletException {
+		System.out.println("im in the filter");
 		HttpServletResponse response = (HttpServletResponse) res;
 	    response.setHeader("Access-Control-Allow-Origin", "*");
 	    response.setHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, DELETE, PATCH");

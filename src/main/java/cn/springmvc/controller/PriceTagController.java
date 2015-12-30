@@ -46,6 +46,10 @@ public class PriceTagController {
 		return HttpUtils.generateResponse("0", "请求成功", tags);
 	}
 	
+	public void getPriceTagsWithAjax() {
+		
+	}
+	
 	/**
 	 * @author Josh Yang
 	 * @description 添加新价签
@@ -134,9 +138,5 @@ public class PriceTagController {
 		}
 		
 		return HttpUtils.generateResponse("0", "请求成功", priceTag);
-	}
-	
-	public void getPriceTagsWithAjax() {
-
 	}
 }

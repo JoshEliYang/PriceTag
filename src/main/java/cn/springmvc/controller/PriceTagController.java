@@ -135,4 +135,8 @@ public class PriceTagController {
 		
 		return HttpUtils.generateResponse("0", "请求成功", priceTag);
 	}
+	
+	public void getPriceTagsWithAjax() {
+
+	}
 }

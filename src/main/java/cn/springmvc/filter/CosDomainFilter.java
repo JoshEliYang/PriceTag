@@ -20,9 +20,9 @@ public class CosDomainFilter implements Filter{
 		
 	}
 
+	// 跨域请求添加返回体
 	public void doFilter(ServletRequest req, ServletResponse res,
 			FilterChain chain) throws IOException, ServletException {
-		System.out.println("im in the filter");
 		HttpServletResponse response = (HttpServletResponse) res;
 	    response.setHeader("Access-Control-Allow-Origin", "*");
 	    response.setHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, DELETE, PATCH");

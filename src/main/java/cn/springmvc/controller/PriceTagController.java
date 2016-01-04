@@ -46,10 +46,6 @@ public class PriceTagController {
 		return HttpUtils.generateResponse("0", "请求成功", tags);
 	}
 	
-	public void getPriceTagsWithAjax() {
-		
-	}
-	
 	/**
 	 * @author Josh Yang
 	 * @description 添加新价签
@@ -104,7 +100,11 @@ public class PriceTagController {
 	public Map<String, Object> deletePriceTagById(@PathVariable String id) {
 		try {
 			int result = priceTagService.deletePriceTag(id);
-			if (result != 0) {
+			if (result == -2) {
+				return HttpUtils.generateResponse("1", "无法识别此价签", null);
+			}
+			
+			if (result == -1) {
 				return HttpUtils.generateResponse("1", "删除失败", null);
 			}
 		} catch (Exception e) {
@@ -127,7 +127,11 @@ public class PriceTagController {
 		PriceTag priceTag = null;
 		try {
 			int result = priceTagService.updatePriceTag(pt);
-			if (result != 0) {
+			if (result == -2) {
+				return HttpUtils.generateResponse("1", "无法识别此价签", null);
+			}
+			
+			if (result == -1) {
 				return HttpUtils.generateResponse("1", "更新失败", null);
 			}
 			

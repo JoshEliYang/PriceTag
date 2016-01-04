@@ -15,6 +15,7 @@ public class PriceTagServiceImpl implements PriceTagService {
 	@Autowired
 	private PriceTagDAO priceTagDao;
 
+	// 添加价签
 	public int insertPriceTag(PriceTag pt) throws Exception{
 		try{
 			priceTagDao.insertPriceTag(pt);
@@ -29,11 +30,13 @@ public class PriceTagServiceImpl implements PriceTagService {
 		return priceTagDao.selectAllPriceTags();
 	}
 
+	// 删除价签
 	public int deletePriceTag(String id) throws Exception{
 		try {
+			// 判断价签是否存在
 			PriceTag pt = priceTagDao.selectPriceTagsById(id);
 			if (pt == null) {
-				return -1;
+				return -2;
 			}
 			priceTagDao.deletePriceTag(id);
 		} catch (Exception e) {
@@ -43,12 +46,14 @@ public class PriceTagServiceImpl implements PriceTagService {
 		return 0;
 	}
 
+	// 更新价签 
 	public int updatePriceTag(PriceTag pt) throws Exception{
 		try {
+			//  判断价签是否存在
 			int id = pt.getId();
 			PriceTag priceTag = priceTagDao.selectPriceTagsById(String.valueOf(id));
 			if (priceTag == null) {
-				return -1;
+				return -2;
 			}
 			
 			priceTagDao.updatePriceTag(pt);
@@ -65,6 +70,7 @@ public class PriceTagServiceImpl implements PriceTagService {
 		return null;
 	}
 
+	// 查询单个价签
 	public PriceTag selectPriceTagById(String id) throws Exception {
 		return priceTagDao.selectPriceTagsById(id);
 	}

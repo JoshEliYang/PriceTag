@@ -25,11 +25,20 @@
 
          </insert>
      
-        <select id="selectPriceTagsById" parameterType="String" resultType="PriceTag">
-          SELECT * FROM PriceTest WHERE id=#{id};
-        </select>
+         <select id="selectPriceTagsById" parameterType="String" resultType="PriceTag">
+           SELECT * FROM PriceTest WHERE id=#{id};
+         </select>
          
          <delete id="deletePriceTag" parameterType="String">
          	DELETE FROM PriceTest WHERE id=#{id}
          </delete>
+         
+         <update id="updatePriceTag" parameterType="PriceTag">
+         	UPDATE priceTest SET shopId = #{shopId}, goodsNo = #{goodsNo},
+         	goodsName = #{goodsName},unit = #{unit}, specifications = #{specifications},
+         	goodsOrigin = #{goodsOrigin}, salesPrice = #{salesPrice}, propmPrice = #{propmPrice}, 
+         	marketPrice = #{marketPrice} WHERE id = #{id};
+         </update>
+         
+         
 </mapper>

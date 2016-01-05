@@ -43,7 +43,7 @@ public class PriceTagController {
 			return HttpUtils.generateResponse("1", "请求失败", null);
 		}
 		
-		return HttpUtils.generateResponse("0", "请求成功", tags);
+		return HttpUtils.generateResponse("0", "查询成功", tags);
 	}
 	
 	/**
@@ -86,7 +86,7 @@ public class PriceTagController {
 			return HttpUtils.generateResponse("1", "请求失败", null);
 		}
 		
-		return HttpUtils.generateResponse("0", "请求成功", pt);
+		return HttpUtils.generateResponse("0", "查询成功", pt);
 	}
 	
 	/**
@@ -112,7 +112,7 @@ public class PriceTagController {
 			return HttpUtils.generateResponse("1", "请求失败", null);
 		}
 		
-		return HttpUtils.generateResponse("0", "请求成功", null);
+		return HttpUtils.generateResponse("0", "删除成功", null);
 	}
 	
 	/**
@@ -141,6 +141,6 @@ public class PriceTagController {
 			return HttpUtils.generateResponse("1", "请求失败", null);
 		}
 		
-		return HttpUtils.generateResponse("0", "请求成功", priceTag);
+		return HttpUtils.generateResponse("0", "更新成功", priceTag);
 	}
 }

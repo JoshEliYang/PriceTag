@@ -143,4 +143,21 @@ public class PriceTagController {
 		
 		return HttpUtils.generateResponse("0", "更新成功", priceTag);
 	}
+	
+	/**
+	 * @author Josh Yang
+	 * @description 批量添加价签
+	 * @date 2015-12-28
+	 * @return JSON
+	 */
+	@ResponseBody
+	@RequestMapping(method=RequestMethod.POST)
+	public Map<String, Object> batchInsertPriceTags(@RequestBody List<PriceTag> priceTags) {
+		if (priceTags == null || priceTags.isEmpty()) {
+			return HttpUtils.generateResponse("-3", "无价签被添加", null);
+		}
+		
+		
+		return HttpUtils.generateResponse("0", "更新成功", null);
+	}
 }

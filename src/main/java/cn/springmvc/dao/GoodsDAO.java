@@ -9,4 +9,6 @@ public interface GoodsDAO {
 	public List<Goods> selectAllGoods();
 	
 	public Goods selectGoodsById(int id);
+	
+	public void deleteGoodById(int id);
 }

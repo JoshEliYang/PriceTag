@@ -65,5 +65,17 @@ public class GoodsController {
 		
 		return HttpUtils.generateResponse("0", "查询成功", good);
 	}
+	 
+	/**
+	 * @author liqiang
+	 * @description 获得单个商品信息
+	 * @date 2015-1-8
+	 * @return JSON
+	 */
+	@ResponseBody
+	@RequestMapping(value="/{id}",method=RequestMethod.DELETE)
+	public Map<String, Object> deleteGoodsById(@PathVariable int id) {
+		return null;
+	}
 	
 }

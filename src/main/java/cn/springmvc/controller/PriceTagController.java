@@ -147,6 +147,29 @@ public class PriceTagController {
 	
 	/**
 	 * @author Josh Yang
+	 * @description 根据id更新单个价签
+	 * @date 2015-12-28
+	 * @return JSON
+	 */
+	@ResponseBody
+	@RequestMapping(value="/{goodsNo}", method=RequestMethod.PATCH)
+	public Map<String, Object> updatePriceTagByGoodsNo(@PathVariable String goodsNo, @RequestBody PriceTag pt) {
+		try {
+			int result = priceTagService.updatePireceTagByGoodsNo(pt);
+			if (result != 0) {
+				return HttpUtils.generateResponse("1", "更新失败", null);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			return HttpUtils.generateResponse("1", "请求失败", null);
+		}
+		
+		return HttpUtils.generateResponse("0", "更新成功", null);
+	}
+	
+	/**
+	 * @author Josh Yang
 	 * @description 根据条件查询价签
 	 * @date 2016-1-13
 	 * @return JSON

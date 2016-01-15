@@ -16,8 +16,11 @@ public interface PriceTagDAO {
 	// 删除价签
 	public int deletePriceTag(String id);
 	
-	//更新价签
+	// 更新价签
 	public int updatePriceTag(PriceTag pt);
+	
+	// 根据商品编码更新价签
+	public int updatePriceTagByGoodsNo(PriceTag pt);
 	
 	// 查询价签
 	public List<PriceTag> selectPriceTagsByParams(RequestParams rp);

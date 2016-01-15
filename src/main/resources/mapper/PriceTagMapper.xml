@@ -41,16 +41,23 @@
          </update>
          
          <select id="selectPriceTagsByParams" parameterType="RequestParams" resultType="PriceTag" >
-         	select * from PriceTagInfo where 1 =1
+         	SELECT * FROM PriceTagInfo WHERE 1 =1
          	<if test ="shopId != null">
-         		and shopId = #{shopId}
+         		AND shopId = #{shopId}
          	</if>
          	<if test="origin != null">
-         		and goodsOrigin = #{origin}
+         		AND goodsOrigin = #{origin}
          	</if>
          	<if test="keyWord != null">
-         		and goodsName like CONCAT('%','${keyWord}','%' )
+         		AND goodsName LIKE CONCAT('%','${keyWord}','%' )
          	</if>
          	;
          </select>
+                  
+         <update id="updatePriceTagByGoodsNo" parameterType="PriceTag">
+            UPDATE PriceTest SET goodsNo = #{goodsNo},
+         	goodsName = #{goodsName},unit = #{unit}, specifications = #{specifications},
+         	goodsOrigin = #{goodsOrigin}, salesPrice = #{salesPrice}, propmPrice = #{propmPrice}, 
+         	marketPrice = #{marketPrice} WHERE goodsNo = #{goodsNo};
+         </update>
 </mapper>

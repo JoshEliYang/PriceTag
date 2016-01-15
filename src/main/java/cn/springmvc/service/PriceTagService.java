@@ -19,6 +19,9 @@ public interface PriceTagService {
 	// 更新价签
 	public int updatePriceTag(PriceTag pt) throws Exception;
 	
+	// 根据商品编码更新价签
+	public int updatePireceTagByGoodsNo(PriceTag pt) throws Exception;
+	
 	// 按条件查询价签
 	public List<PriceTag> selectPriceTagsByParams(RequestParams rp) throws Exception;
 	

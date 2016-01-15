@@ -76,4 +76,19 @@ public class PriceTagServiceImpl implements PriceTagService {
 			throws Exception {
 		return priceTagDao.selectPriceTagsByParams(rp);
 	}
+
+	// 根据商品编码更新价签
+	public int updatePireceTagByGoodsNo(PriceTag pt) throws Exception {
+		try {
+			String goodsNo = pt.getGoodsNo();
+			if (goodsNo == null || goodsNo.equals("")) {
+				return -2;
+			}
+			
+			priceTagDao.updatePriceTagByGoodsNo(pt);
+		} catch (Exception ex) {
+			return -1;
+		}
+		return 0;
+	}
 }

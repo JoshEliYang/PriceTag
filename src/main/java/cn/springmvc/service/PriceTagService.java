@@ -3,6 +3,7 @@ package cn.springmvc.service;
 import java.util.List;
 
 import cn.springmvc.model.PriceTag;
+import cn.springmvc.model.RequestParams;
 
 public interface PriceTagService {
 	
@@ -19,7 +20,7 @@ public interface PriceTagService {
 	public int updatePriceTag(PriceTag pt) throws Exception;
 	
 	// 按条件查询价签
-	public List<PriceTag> selectPriceTagsByParams(PriceTag pt) throws Exception;
+	public List<PriceTag> selectPriceTagsByParams(RequestParams rp) throws Exception;
 	
 	// 查询单个价签
 	public PriceTag selectPriceTagById(String id) throws Exception;

@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.springmvc.utils.HttpUtils;
 
 import cn.springmvc.model.PriceTag;
+import cn.springmvc.model.RequestParams;
 import cn.springmvc.service.PriceTagService;
 
 @Scope("prototype")
@@ -142,5 +143,28 @@ public class PriceTagController {
 		}
 		
 		return HttpUtils.generateResponse("0", "更新成功", priceTag);
+	}
+	
+	/**
+	 * @author Josh Yang
+	 * @description 根据条件查询价签
+	 * @date 2016-1-13
+	 * @return JSON
+	 */
+	@ResponseBody
+	@RequestMapping(value="/query",method=RequestMethod.POST)
+	public Map<String, Object> getPriceTagsByParam(@RequestBody RequestParams rp) {
+		if (rp == null) {
+			return HttpUtils.generateResponse("-2", "请求缺少参数", null);
+		}
+		List<PriceTag> priceTags = null;
+		try {
+			priceTags = priceTagService.selectPriceTagsByParams(rp);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return HttpUtils.generateResponse("1", "请求失败", null);
+		}
+		
+		return HttpUtils.generateResponse("0", "请求成功", priceTags);
 	}
 }

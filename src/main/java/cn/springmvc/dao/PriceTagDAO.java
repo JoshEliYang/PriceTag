@@ -3,6 +3,7 @@ package cn.springmvc.dao;
 import java.util.List;
 
 import cn.springmvc.model.PriceTag;
+import cn.springmvc.model.RequestParams;
 
 public interface PriceTagDAO {
 
@@ -19,7 +20,7 @@ public interface PriceTagDAO {
 	public int updatePriceTag(PriceTag pt);
 	
 	// 查询价签
-	public List<PriceTag> selectPriceTagsByParams(PriceTag pt);
+	public List<PriceTag> selectPriceTagsByParams(RequestParams rp);
 	
 	// 获得单个价签
 	public PriceTag selectPriceTagsById(String id);

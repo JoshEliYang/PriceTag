@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import cn.springmvc.dao.PriceTagDAO;
 import cn.springmvc.model.PriceTag;
+import cn.springmvc.model.RequestParams;
 import cn.springmvc.service.PriceTagService;
 
 @Service
@@ -65,14 +66,14 @@ public class PriceTagServiceImpl implements PriceTagService {
 		return 0;
 	}
 
-	public List<PriceTag> selectPriceTagsByParams(PriceTag pt) throws Exception{
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 	// 查询单个价签
 	public PriceTag selectPriceTagById(String id) throws Exception {
 		return priceTagDao.selectPriceTagsById(id);
 	}
 
+	// 条件搜索价签
+	public List<PriceTag> selectPriceTagsByParams(RequestParams rp)
+			throws Exception {
+		return priceTagDao.selectPriceTagsByParams(rp);
+	}
 }

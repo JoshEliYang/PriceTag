@@ -55,7 +55,7 @@
          </select>
                   
          <update id="updatePriceTagByGoodsNo" parameterType="PriceTag">
-            UPDATE PriceTest SET goodsNo = #{goodsNo},
+            UPDATE PriceTagInfo SET 
          	goodsName = #{goodsName},unit = #{unit}, specifications = #{specifications},
          	goodsOrigin = #{goodsOrigin}, salesPrice = #{salesPrice}, propmPrice = #{propmPrice}, 
          	marketPrice = #{marketPrice} WHERE goodsNo = #{goodsNo};

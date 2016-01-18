@@ -5,8 +5,10 @@
 <mapper namespace="cn.springmvc.dao.SelectDAO">
 
 	<select id="selectAllShop" resultType="Select">
-		SELECT DISTINCT shopId AS id, CASE shopId WHEN  'KJG001' THEN ' 杨浦'
+		SELECT DISTINCT shopId AS id, CASE shopId 
+		  WHEN  'KJG001' THEN '杨浦'
           WHEN  'KJG002' THEN '大华' 
+          WHEN  'KJG003' THEN '徐汇'
           ELSE '松江' END AS content
           FROM PriceTagInfo;
 	</select>

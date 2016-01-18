@@ -152,7 +152,7 @@ public class PriceTagController {
 	 * @return JSON
 	 */
 	@ResponseBody
-	@RequestMapping(value="/{goodsNo}", method=RequestMethod.PATCH)
+	@RequestMapping(value="/{goodsNo}/all", method=RequestMethod.PATCH)
 	public Map<String, Object> updatePriceTagByGoodsNo(@PathVariable String goodsNo, @RequestBody PriceTag pt) {
 		try {
 			int result = priceTagService.updatePireceTagByGoodsNo(pt);

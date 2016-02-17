@@ -27,4 +27,9 @@ public interface PriceTagDAO {
 	
 	// 获得单个价签
 	public PriceTag selectPriceTagsById(String id);
+	
+	// 获得所有已删除价签
+	public List<PriceTag> selectAllDeletedPriceTags();
+	
+	public int rollbackDeletedPriceTag(String id);
 }

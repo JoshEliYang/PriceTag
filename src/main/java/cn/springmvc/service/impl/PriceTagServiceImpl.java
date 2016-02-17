@@ -91,4 +91,25 @@ public class PriceTagServiceImpl implements PriceTagService {
 		}
 		return 0;
 	}
+
+	// 获得所有已删除价签
+	public List<PriceTag> selectAllDeletePriceTags() throws Exception {
+		return priceTagDao.selectAllDeletedPriceTags();
+	}
+
+	// 复位已删除价签
+	public int rollbackDeletedPriceTag(String id) throws Exception {
+		try {
+			// 判断价签是否存在
+			PriceTag pt = priceTagDao.selectPriceTagsById(id);
+			if (pt == null) {
+				return -2;
+			}
+			priceTagDao.rollbackDeletedPriceTag(id);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return -1;
+		}
+		return 0;
+	}
 }

@@ -27,5 +27,10 @@ public interface PriceTagService {
 	
 	// 查询单个价签
 	public PriceTag selectPriceTagById(String id) throws Exception;
-
+	
+	// 查询所有已删除价签
+	public List<PriceTag> selectAllDeletePriceTags() throws Exception;
+	
+	// 复位已删除价签
+	public int rollbackDeletedPriceTag(String id) throws Exception; 
 }

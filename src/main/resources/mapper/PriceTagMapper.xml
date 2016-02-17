@@ -5,11 +5,11 @@
 <mapper namespace="cn.springmvc.dao.PriceTagDAO">
     
          <select id="selectAllPriceTags" resultType="PriceTag">
-          SELECT * FROM PriceTagInfo;
+          SELECT * FROM PriceTest WHERE isDelete = 0;
          </select>
          
          <insert id="insertPriceTag" parameterType="PriceTag" keyProperty="id">
-			INSERT INTO PriceTagInfo 
+			INSERT INTO PriceTest 
 			(`shopId`, `goodsNo`, `goodsName`, `unit`, `specifications`, `goodsOrigin`, 
 			`salesPrice`, `propmPrice`, `marketPrice`, `qrCode`) VALUES 
 			(#{shopId}, 
@@ -22,26 +22,25 @@
 			 #{propmPrice}, 
 			 #{marketPrice}, 
 			 #{qrCode});
-
          </insert>
      
          <select id="selectPriceTagsById" parameterType="String" resultType="PriceTag">
-           SELECT * FROM PriceTagInfo WHERE id=#{id};
+           SELECT * FROM PriceTest WHERE id=#{id};
          </select>
          
          <delete id="deletePriceTag" parameterType="String">
-         	DELETE FROM PriceTagInfo WHERE id=#{id}
+         	UPDATE PriceTest SET isDelete='1' WHERE id =#{id};
          </delete>
          
          <update id="updatePriceTag" parameterType="PriceTag">
-         	UPDATE PriceTagInfo SET shopId = #{shopId}, goodsNo = #{goodsNo},
+         	UPDATE PriceTest SET shopId = #{shopId}, goodsNo = #{goodsNo},
          	goodsName = #{goodsName},unit = #{unit}, specifications = #{specifications},
          	goodsOrigin = #{goodsOrigin}, salesPrice = #{salesPrice}, propmPrice = #{propmPrice}, 
          	marketPrice = #{marketPrice} WHERE id = #{id};
          </update>
          
          <select id="selectPriceTagsByParams" parameterType="RequestParams" resultType="PriceTag" >
-         	SELECT * FROM PriceTagInfo WHERE 1 =1
+         	SELECT * FROM PriceTest WHERE 1 =1
          	<if test ="shopId != null">
          		AND shopId = #{shopId}
          	</if>
@@ -55,9 +54,17 @@
          </select>
                   
          <update id="updatePriceTagByGoodsNo" parameterType="PriceTag">
-            UPDATE PriceTagInfo SET 
+            UPDATE PriceTest SET 
          	goodsName = #{goodsName},unit = #{unit}, specifications = #{specifications},
          	goodsOrigin = #{goodsOrigin}, salesPrice = #{salesPrice}, propmPrice = #{propmPrice}, 
          	marketPrice = #{marketPrice} WHERE goodsNo = #{goodsNo};
+         </update>
+         
+         <select id="selectAllDeletedPriceTags" resultType="PriceTag">
+         	SELECT * FROM PriceTest WHERE isDelete = 1;
+         </select>
+         
+         <update id="rollbackDeletedPriceTag" parameterType="String">
+         	UPDATE PriceTest SET isDelete='0' WHERE id =#{id};
          </update>
 </mapper>

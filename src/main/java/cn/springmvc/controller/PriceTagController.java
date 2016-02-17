@@ -118,6 +118,32 @@ public class PriceTagController {
 	
 	/**
 	 * @author Josh Yang
+	 * @description 复位已删除单个价签
+	 * @date 2015-12-28
+	 * @return JSON
+	 */
+	@ResponseBody
+	@RequestMapping(value="/{id}/rollback",method=RequestMethod.PATCH)
+	public Map<String, Object> rollbackDeletedPriceTag(@PathVariable String id) {
+		try {
+			int result = priceTagService.deletePriceTag(id);
+			if (result == -2) {
+				return HttpUtils.generateResponse("1", "无法识别此价签", null);
+			}
+			
+			if (result == -1) {
+				return HttpUtils.generateResponse("1", "删除失败", null);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			return HttpUtils.generateResponse("1", "请求失败", null);
+		}
+		
+		return HttpUtils.generateResponse("0", "删除成功", null);
+	}
+	
+	/**
+	 * @author Josh Yang
 	 * @description 根据id更新单个价签
 	 * @date 2015-12-28
 	 * @return JSON
@@ -189,5 +215,25 @@ public class PriceTagController {
 		}
 		
 		return HttpUtils.generateResponse("0", "请求成功", priceTags);
+	}
+	
+	/**
+	 * @author Josh Yang
+	 * @description 获得所有已删除价签
+	 * @date 2015-12-28
+	 * @return JSON
+	 */
+	@ResponseBody
+	@RequestMapping(value="/deleted", method=RequestMethod.GET)
+	public Map<String, Object> getAllDeletedPriceTags() {
+		List<PriceTag> tags = null;
+		try {
+			 tags = priceTagService.selectAllDeletePriceTags();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return HttpUtils.generateResponse("1", "请求失败", null);
+		}
+		
+		return HttpUtils.generateResponse("0", "查询成功", tags);
 	}
 }

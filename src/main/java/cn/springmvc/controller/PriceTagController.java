@@ -139,7 +139,7 @@ public class PriceTagController {
 			return HttpUtils.generateResponse("1", "请求失败", null);
 		}
 		
-		return HttpUtils.generateResponse("0", "删除成功", null);
+		return HttpUtils.generateResponse("0", "复位成功", null);
 	}
 	
 	/**

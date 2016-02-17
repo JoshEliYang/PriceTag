@@ -25,7 +25,7 @@
          </insert>
      
          <select id="selectPriceTagsById" parameterType="String" resultType="PriceTag">
-           SELECT * FROM PriceTagInfo WHERE id=#{id};
+           SELECT * FROM PriceTagInfo WHERE id=#{id} and isDelete = 0;
          </select>
          
          <delete id="deletePriceTag" parameterType="String">
@@ -54,17 +54,17 @@
          </select>
                   
          <update id="updatePriceTagByGoodsNo" parameterType="PriceTag">
-            UPDATE PriceTest SET 
+            UPDATE PriceTagInfo SET 
          	goodsName = #{goodsName},unit = #{unit}, specifications = #{specifications},
          	goodsOrigin = #{goodsOrigin}, salesPrice = #{salesPrice}, propmPrice = #{propmPrice}, 
          	marketPrice = #{marketPrice} WHERE goodsNo = #{goodsNo};
          </update>
          
          <select id="selectAllDeletedPriceTags" resultType="PriceTag">
-         	SELECT * FROM PriceTest WHERE isDelete = 1;
+         	SELECT * FROM PriceTagInfo WHERE isDelete = 1;
          </select>
          
          <update id="rollbackDeletedPriceTag" parameterType="String">
-         	UPDATE PriceTest SET isDelete='0' WHERE id =#{id};
+         	UPDATE PriceTagInfo SET isDelete='0' WHERE id =#{id};
          </update>
 </mapper>

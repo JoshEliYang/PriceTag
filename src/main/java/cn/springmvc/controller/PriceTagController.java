@@ -126,7 +126,7 @@ public class PriceTagController {
 	@RequestMapping(value="/{id}/rollback",method=RequestMethod.PATCH)
 	public Map<String, Object> rollbackDeletedPriceTag(@PathVariable String id) {
 		try {
-			int result = priceTagService.deletePriceTag(id);
+			int result = priceTagService.rollbackDeletedPriceTag(id);
 			if (result == -2) {
 				return HttpUtils.generateResponse("1", "无法识别此价签", null);
 			}

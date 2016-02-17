@@ -31,5 +31,6 @@ public interface PriceTagDAO {
 	// 获得所有已删除价签
 	public List<PriceTag> selectAllDeletedPriceTags();
 	
+	// 复位删除价签
 	public int rollbackDeletedPriceTag(String id);
 }

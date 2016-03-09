@@ -3,12 +3,15 @@
 PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
-        <!-- 命名空间 -->
+    <!-- 命名空间 -->
     <typeAliases>
          <typeAlias alias="PriceTag" type="cn.springmvc.model.PriceTag"/>
          <typeAlias alias="Goods" type="cn.springmvc.model.Goods"/>
          <typeAlias alias="Select" type="cn.springmvc.model.Select"/>
          <typeAlias alias="RequestParams" type="cn.springmvc.model.RequestParams"/>
+         <typeAlias alias="User" type="cn.springmvc.model.User"/>
+         <typeAlias alias="Shop" type="cn.springmvc.model.Shop"/>
+         <typeAlias alias="UserActionLog" type="cn.springmvc.model.UserActionLog"/>
     </typeAliases>
 
     <!-- 映射map -->

@@ -9,4 +9,8 @@ public interface SkuCheckService {
 	public List<SkuCheck> getSkuCheckListByShopId(String shopId) throws Exception;
 	
 	public int saveOneSkuCheck(SkuCheck sku) throws Exception;
+	
+	public int updateOneSkuCheck(SkuCheck sku) throws Exception;
+	
+	public SkuCheck getSkuCheckById(String id) throws Exception;
 }

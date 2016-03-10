@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.springmvc.utils.GLCPDateUtils;
 import com.springmvc.utils.GLCPStringUtils;
 import com.springmvc.utils.HttpUtils;
 
@@ -68,5 +69,42 @@ public class SkuCheckController {
 			return HttpUtils.generateResponse("1", "服务器内部错误", null);
 		}
 		return HttpUtils.generateResponse("0", "添加成功", null);
+	}
+	
+	/**
+	 * @author Josh Yang
+	 * @description 根据创建新盘点单
+	 * @date 2015-3-10
+	 * @return JSON
+	 */
+	@ResponseBody
+	@RequestMapping(value="/{id}", method = RequestMethod.PUT)
+	public Map<String, Object> updateOneSkuCheck(@PathVariable String id, @RequestBody SkuCheck sku) {
+		try {
+			SkuCheck skuCheck = skuCheckService.getSkuCheckById(id);
+			if (skuCheck == null) {
+				return HttpUtils.generateResponse("1", "查询不到此盘点单", null);
+			}
+		} catch (Exception e) {
+			return HttpUtils.generateResponse("1", "服务器内部错误", null);
+		}
+		
+		if (sku == null ||
+			 GLCPStringUtils.isNull(sku.getActor()) ||
+			 GLCPStringUtils.isNull(sku.getChecker())) {
+			return HttpUtils.generateResponse("1", "请求失败", null);
+		}
+
+		try {
+			sku.setId(Integer.parseInt(id));
+			sku.setCheckDate(GLCPDateUtils.getNowDate());
+			int result = skuCheckService.updateOneSkuCheck(sku);
+			if (result != 0) {
+				return HttpUtils.generateResponse("1", "更新失败", null);
+			}
+		} catch (Exception ex) {
+			return HttpUtils.generateResponse("1", "服务器内部错误", null);
+		}
+		return HttpUtils.generateResponse("0", "更新成功", null);
 	}
 }

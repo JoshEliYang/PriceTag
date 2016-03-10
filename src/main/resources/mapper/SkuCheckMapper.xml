@@ -5,10 +5,18 @@
 
 <mapper namespace="cn.springmvc.dao.SkuCheckDAO">
 	<select id="getSkuCheckListByShopId" parameterType="String" resultType="SkuCheck">
-		select * from skuCheck where shopId = #{shopId};
+		SELECT * FROM skuCheck WHERE shopId = #{shopId};
+	</select>
+	
+	<select id="getSkuCheckById" parameterType="String" resultType="SkuCheck">
+	    SELECT * FROM skuCheck WHERE id = #{id};
 	</select>
 	
 	<insert id="saveOneSkuCheck" parameterType="SkuCheck" keyProperty="id">
 		INSERT INTO skuCheck (shopId,actor,creationDate) VALUES (#{shopId}, #{actor}, #{creationDate});
 	</insert>
+	
+	<update id="updateOneSkuCheck" parameterType="SkuCheck">
+		UPDATE `skuCheck` SET `checker`= #{checker}, checkDate = #{checkDate} WHERE `id`= #{id};
+	</update>
 </mapper>

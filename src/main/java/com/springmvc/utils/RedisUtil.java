@@ -48,10 +48,10 @@ public class RedisUtil {
 		}
 	}
 
-	public void setdat(String key, String value) {
+	public void setdat(String key, String value ,int timestamps) {
 		try {
 			jedis.set(key, value);
-			jedis.expire(key, 24 * 3600);
+			jedis.expire(key, timestamps);
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}

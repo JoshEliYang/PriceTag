@@ -6,7 +6,8 @@ import cn.springmvc.model.EquCheck;
 
 public interface EquCheckService {
 
-public List<EquCheck> getEquCheckListByShopId(String shopId) throws Exception;
-	
+	public List<EquCheck> getEquCheckListByShopId(String shopId)
+			throws Exception;
+
 	public int saveOneEquCheck(EquCheck sku) throws Exception;
 }

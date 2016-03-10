@@ -8,7 +8,7 @@
 		select * from equCheck where shopId = #{shopId};
 	</select>
 	
-	<insert id="saveOneSkuCheck" parameterType="EquCheck" keyProperty="id">
+	<insert id="saveOneEquCheck" parameterType="EquCheck" keyProperty="id">
 		INSERT INTO equCheck (shopId,actor,creationDate) VALUES (#{shopId}, #{actor}, #{creationDate});
 	</insert>
 </mapper>

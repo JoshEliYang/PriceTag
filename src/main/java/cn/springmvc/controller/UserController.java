@@ -51,7 +51,7 @@ public class UserController {
 			
 			String token = GLCPStringUtils.generateRandomDigits(20);
 
-			RedisUtil.getRedis().setdat(token, user.getRole()+"$"+user.getShopId());
+			RedisUtil.getRedis().setdat(token, user.getRole()+"$"+user.getShopId(), 12*3600);
 			
 			Map<String, String> resDatas = new HashMap<String, String>();
 			resDatas.put("token", token);

@@ -86,8 +86,8 @@ public class EquCheckController {
 	 * @return JSON
 	 */
 	@ResponseBody
-	@RequestMapping(value="/{id}", method = RequestMethod.PATCH)
-	public Map<String, Object> updateOneEquCheck(@PathVariable String id, @RequestBody EquCheck sku) {
+	@RequestMapping(value="/{id}", method = RequestMethod.PUT)
+	public Map<String, Object> updateOneEquCheck(@PathVariable String id, @RequestBody EquCheck equ) {
 		try {
 			EquCheck equCheck = equCheckService.getEquCheckById(id);
 			if (equCheck == null) {
@@ -97,16 +97,16 @@ public class EquCheckController {
 			return HttpUtils.generateResponse("1", "服务器内部错误", null);
 		}
 		
-		if (sku == null ||
-			 GLCPStringUtils.isNull(sku.getActor()) ||
-			 GLCPStringUtils.isNull(sku.getChecker())) {
+		if (equ == null ||
+			 GLCPStringUtils.isNull(equ.getActor()) ||
+			 GLCPStringUtils.isNull(equ.getChecker())) {
 			return HttpUtils.generateResponse("1", "请求失败", null);
 		}
 
 		try {
-			sku.setId(Integer.parseInt(id));
-			sku.setCheckDate(GLCPDateUtils.getNowDate());
-			int result = equCheckService.updateOneEquCheck(sku);
+			equ.setId(Integer.parseInt(id));
+			equ.setCheckDate(GLCPDateUtils.getNowDate());
+			int result = equCheckService.updateOneEquCheck(equ);
 			if (result != 0) {
 				return HttpUtils.generateResponse("1", "更新失败", null);
 			}

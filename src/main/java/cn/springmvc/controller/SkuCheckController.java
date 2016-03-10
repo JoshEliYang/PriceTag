@@ -78,7 +78,7 @@ public class SkuCheckController {
 	 * @return JSON
 	 */
 	@ResponseBody
-	@RequestMapping(value="/{id}", method = RequestMethod.PUT)
+	@RequestMapping(value="/{id}", method = RequestMethod.PATCH)
 	public Map<String, Object> updateOneSkuCheck(@PathVariable String id, @RequestBody SkuCheck sku) {
 		try {
 			SkuCheck skuCheck = skuCheckService.getSkuCheckById(id);

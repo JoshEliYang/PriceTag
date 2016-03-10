@@ -2,6 +2,8 @@ package cn.springmvc.model;
 
 import java.sql.Date;
 
+import com.springmvc.utils.GLCPDateUtils;
+
 public class SkuCheck {
 
 	private int id;
@@ -10,7 +12,7 @@ public class SkuCheck {
 	
 	private String actor;
 	
-	private Date creationDate;
+	private Date creationDate = GLCPDateUtils.getNowDate();
 	
 	private String checker;
 	
@@ -70,7 +72,7 @@ public class SkuCheck {
 		this.id = id;
 		this.shopId = shopId;
 		this.actor = actor;
-		this.creationDate = creationDate;
+		this.creationDate = GLCPDateUtils.getNowDate();
 		this.checker = checker;
 		this.checkDate = checkDate;
 	}

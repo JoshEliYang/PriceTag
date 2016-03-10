@@ -11,6 +11,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
          <typeAlias alias="RequestParams" type="cn.springmvc.model.RequestParams"/>
          <typeAlias alias="User" type="cn.springmvc.model.User"/>
          <typeAlias alias="SkuCheck" type="cn.springmvc.model.SkuCheck"/>
+         <typeAlias alias="EquCheck" type="cn.springmvc.model.EquCheck"/>
     </typeAliases>
 
     <!-- 映射map -->

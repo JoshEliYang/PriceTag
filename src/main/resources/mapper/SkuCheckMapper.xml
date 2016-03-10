@@ -4,7 +4,7 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="cn.springmvc.dao.SkuCheckDAO">
-	<select id="getSkuCheckListByShopId" parameterType="String" resultType="skuCheck">
+	<select id="getSkuCheckListByShopId" parameterType="String" resultType="SkuCheck">
 		select * from skuCheck where shopId = #{shopId};
 	</select>
 	

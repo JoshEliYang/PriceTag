@@ -10,8 +10,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
          <typeAlias alias="Select" type="cn.springmvc.model.Select"/>
          <typeAlias alias="RequestParams" type="cn.springmvc.model.RequestParams"/>
          <typeAlias alias="User" type="cn.springmvc.model.User"/>
-         <typeAlias alias="Shop" type="cn.springmvc.model.Shop"/>
-         <typeAlias alias="UserActionLog" type="cn.springmvc.model.UserActionLog"/>
+         <typeAlias alias="SkuCheck" type="cn.springmvc.model.SkuCheck"/>
     </typeAliases>
 
     <!-- 映射map -->

@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 
 import cn.springmvc.model.EquCheck;
-import cn.springmvc.model.SkuCheck;
 import cn.springmvc.service.EquCheckService;
 
 import com.springmvc.utils.GLCPDateUtils;
@@ -86,7 +85,7 @@ public class EquCheckController {
 	 * @return JSON
 	 */
 	@ResponseBody
-	@RequestMapping(value="/{id}", method = RequestMethod.PUT)
+	@RequestMapping(value="/{id}", method = RequestMethod.PATCH)
 	public Map<String, Object> updateOneEquCheck(@PathVariable String id, @RequestBody EquCheck equ) {
 		try {
 			EquCheck equCheck = equCheckService.getEquCheckById(id);

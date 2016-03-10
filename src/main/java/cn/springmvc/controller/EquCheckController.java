@@ -59,14 +59,14 @@ public class EquCheckController {
 	 */
 	@ResponseBody
 	@RequestMapping(method = RequestMethod.POST)
-	public Map<String, Object> saveOneSkuCheck(@RequestBody EquCheck sku) {
-		if (sku == null ||
-			 GLCPStringUtils.isNull(sku.getActor())) {
+	public Map<String, Object> saveOneSkuCheck(@RequestBody EquCheck equ) {
+		if (equ == null ||
+			 GLCPStringUtils.isNull(equ.getActor())) {
 			return HttpUtils.generateResponse("1", "请求失败", null);
 		}
 
 		try {
-			int result = equCheckService.saveOneEquCheck(sku);
+			int result = equCheckService.saveOneEquCheck(equ);
 			if (result != 0) {
 				return HttpUtils.generateResponse("1", "添加失败", null);
 			}

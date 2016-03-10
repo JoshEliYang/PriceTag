@@ -16,9 +16,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 
 
+
 import cn.springmvc.model.EquCheck;
+import cn.springmvc.model.SkuCheck;
 import cn.springmvc.service.EquCheckService;
 
+import com.springmvc.utils.GLCPDateUtils;
 import com.springmvc.utils.GLCPStringUtils;
 import com.springmvc.utils.HttpUtils;
 
@@ -74,5 +77,42 @@ public class EquCheckController {
 			return HttpUtils.generateResponse("1", "服务器内部错误", null);
 		}
 		return HttpUtils.generateResponse("0", "添加成功", null);
+	}
+	
+	/**
+	 * @author Josh Yang
+	 * @description 审核设备盘点单
+	 * @date 2015-3-10
+	 * @return JSON
+	 */
+	@ResponseBody
+	@RequestMapping(value="/{id}", method = RequestMethod.PATCH)
+	public Map<String, Object> updateOneEquCheck(@PathVariable String id, @RequestBody EquCheck sku) {
+		try {
+			EquCheck equCheck = equCheckService.getEquCheckById(id);
+			if (equCheck == null) {
+				return HttpUtils.generateResponse("1", "查询不到此设备盘点单", null);
+			}
+		} catch (Exception e) {
+			return HttpUtils.generateResponse("1", "服务器内部错误", null);
+		}
+		
+		if (sku == null ||
+			 GLCPStringUtils.isNull(sku.getActor()) ||
+			 GLCPStringUtils.isNull(sku.getChecker())) {
+			return HttpUtils.generateResponse("1", "请求失败", null);
+		}
+
+		try {
+			sku.setId(Integer.parseInt(id));
+			sku.setCheckDate(GLCPDateUtils.getNowDate());
+			int result = equCheckService.updateOneEquCheck(sku);
+			if (result != 0) {
+				return HttpUtils.generateResponse("1", "更新失败", null);
+			}
+		} catch (Exception ex) {
+			return HttpUtils.generateResponse("1", "服务器内部错误", null);
+		}
+		return HttpUtils.generateResponse("0", "更新成功", null);
 	}
 }

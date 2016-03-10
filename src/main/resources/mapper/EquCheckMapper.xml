@@ -8,7 +8,15 @@
 		select * from equCheck where shopId = #{shopId};
 	</select>
 	
+	<select id="getEquCheckById" parameterType="String" resultType="EquCheck">
+	    SELECT * FROM equCheck WHERE id = #{id};
+	</select>
+	
 	<insert id="saveOneEquCheck" parameterType="EquCheck" keyProperty="id">
 		INSERT INTO equCheck (shopId,actor,creationDate) VALUES (#{shopId}, #{actor}, #{creationDate});
 	</insert>
+	
+	<update id="updateOneEquCheck" parameterType="EqCheck">
+		UPDATE `EquCheck` SET `checker`= #{checker}, checkDate = #{checkDate} WHERE `id`= #{id};
+	</update>
 </mapper>

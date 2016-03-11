@@ -10,4 +10,8 @@ public interface EquCheckDAO {
 			throws Exception;
 
 	public int saveOneEquCheck(EquCheck sku) throws Exception;
+	
+	public EquCheck getEquCheckById(String id) throws Exception;
+	
+	public int updateOneEquCheck(EquCheck equ) throws Exception;
 }

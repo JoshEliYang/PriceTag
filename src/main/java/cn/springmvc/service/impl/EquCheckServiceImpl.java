@@ -28,4 +28,17 @@ public class EquCheckServiceImpl implements EquCheckService {
 		}
 		return 0;
 	}
+
+	public EquCheck getEquCheckById(String id) throws Exception {
+		return equCheckDao.getEquCheckById(id);
+	}
+
+	public int updateOneEquCheck(EquCheck equ) throws Exception {
+		try {
+			equCheckDao.updateOneEquCheck(equ);
+		} catch (Exception ex) {
+			return -1;
+		}
+		return 0;
+	}
 }

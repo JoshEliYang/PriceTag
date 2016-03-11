@@ -28,4 +28,17 @@ public class SkuCheckServiceImpl implements SkuCheckService {
 		}
 		return 0;
 	}
+
+	public int updateOneSkuCheck(SkuCheck sku) throws Exception {
+		try {
+			skuCheckDao.updateOneSkuCheck(sku);
+		} catch (Exception ex) {
+			return -1;
+		}
+		return 0;
+	}
+
+	public SkuCheck getSkuCheckById(String id) throws Exception {
+		return skuCheckDao.getSkuCheckById(id);
+	}
 }

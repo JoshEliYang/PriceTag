@@ -43,7 +43,7 @@ public class SkuCheckController {
 			ex.printStackTrace();
 			return HttpUtils.generateResponse("1", "服务器内部错误", null);
 		}
-		return HttpUtils.generateResponse("1", "请求成功", lists);
+		return HttpUtils.generateResponse("0", "请求成功", lists);
 	}
 
 	/**

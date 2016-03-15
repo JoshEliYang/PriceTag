@@ -12,7 +12,7 @@
 	    SELECT * FROM equCheck WHERE id = #{id};
 	</select>
 	
-	<insert id="saveOneEquCheck" parameterType="EquCheck" keyProperty="id">
+	<insert id="saveOneEquCheck" parameterType="EquCheck" keyProperty="id" useGeneratedKeys="true" >
 		INSERT INTO equCheck (shopId,actor,creationDate) VALUES (#{shopId}, #{actor}, #{creationDate});
 	</insert>
 	

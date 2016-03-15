@@ -26,7 +26,7 @@ public class EquCheckServiceImpl implements EquCheckService {
 		} catch (Exception ex) {
 			return -1;
 		}
-		return 0;
+		return sku.getId();
 	}
 
 	public EquCheck getEquCheckById(String id) throws Exception {

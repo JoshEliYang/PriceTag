@@ -12,7 +12,7 @@
 	    SELECT * FROM skuCheck WHERE id = #{id};
 	</select>
 	
-	<insert id="saveOneSkuCheck" parameterType="SkuCheck" keyProperty="id">
+	<insert id="saveOneSkuCheck" parameterType="SkuCheck" keyProperty="id" useGeneratedKeys="true">
 		INSERT INTO skuCheck (shopId,actor,creationDate) VALUES (#{shopId}, #{actor}, #{creationDate});
 	</insert>
 	

@@ -1,5 +1,6 @@
 package cn.springmvc.controller;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+
 
 
 
@@ -67,15 +69,15 @@ public class EquCheckController {
 			return HttpUtils.generateResponse("1", "请求失败", null);
 		}
 
+		Map<String, Object> responeMap = new HashMap<String, Object>();
+		
 		try {
-			int result = equCheckService.saveOneEquCheck(equ);
-			if (result != 0) {
-				return HttpUtils.generateResponse("1", "添加失败", null);
-			}
+			int primaryKey = equCheckService.saveOneEquCheck(equ);
+			responeMap.put("id", primaryKey);
 		} catch (Exception ex) {
 			return HttpUtils.generateResponse("1", "服务器内部错误", null);
 		}
-		return HttpUtils.generateResponse("0", "添加成功", null);
+		return HttpUtils.generateResponse("0", "添加成功", responeMap);
 	}
 	
 	/**

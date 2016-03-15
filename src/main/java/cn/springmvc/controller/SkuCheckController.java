@@ -1,5 +1,6 @@
 package cn.springmvc.controller;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -59,16 +60,14 @@ public class SkuCheckController {
 			 GLCPStringUtils.isNull(sku.getActor())) {
 			return HttpUtils.generateResponse("1", "请求失败", null);
 		}
-
+		Map<String, Object> responseMap = new HashMap<String, Object>();
 		try {
-			int result = skuCheckService.saveOneSkuCheck(sku);
-			if (result != 0) {
-				return HttpUtils.generateResponse("1", "添加失败", null);
-			}
+			int primaryKey = skuCheckService.saveOneSkuCheck(sku);
+			responseMap.put("id", primaryKey);
 		} catch (Exception ex) {
 			return HttpUtils.generateResponse("1", "服务器内部错误", null);
 		}
-		return HttpUtils.generateResponse("0", "添加成功", null);
+		return HttpUtils.generateResponse("0", "添加成功", responseMap);
 	}
 	
 	/**

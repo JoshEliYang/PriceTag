@@ -5,7 +5,7 @@
 
 <mapper namespace="cn.springmvc.dao.EquCheckDAO">
 	<select id="getEquCheckListByShopId" parameterType="String" resultType="EquCheck">
-		SELECT * FROM equCheck WHERE shopId = #{shopId};
+		SELECT * FROM equCheck WHERE shopId = #{shopId} ORDER BY id DESC;
 	</select>
 	
 	<select id="getEquCheckById" parameterType="String" resultType="EquCheck">

@@ -5,7 +5,7 @@
 
 <mapper namespace="cn.springmvc.dao.SkuCheckDAO">
 	<select id="getSkuCheckListByShopId" parameterType="String" resultType="SkuCheck">
-		SELECT * FROM skuCheck WHERE shopId = #{shopId};
+		SELECT * FROM skuCheck WHERE shopId = #{shopId} ORDER BY id DESC;
 	</select>
 	
 	<select id="getSkuCheckById" parameterType="String" resultType="SkuCheck">

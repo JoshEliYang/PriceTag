@@ -26,7 +26,7 @@ public class SkuCheckServiceImpl implements SkuCheckService {
 		} catch (Exception ex) {
 			return -1;
 		}
-		return 0;
+		return sku.getId();
 	}
 
 	public int updateOneSkuCheck(SkuCheck sku) throws Exception {

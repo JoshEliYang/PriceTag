@@ -18,7 +18,7 @@ import com.springmvc.utils.HttpUtils;
 
 @Scope("prototype")
 @Controller
-@RequestMapping("/equ")
+@RequestMapping("/equs")
 public class EquController {
 
 	private EquService equService;

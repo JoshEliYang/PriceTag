@@ -48,6 +48,23 @@ public class SkuCheckController {
 	}
 
 	/**
+	 * @author johsnon
+	 * @return
+	 */
+	@ResponseBody
+	@RequestMapping(value = "/all", method = RequestMethod.GET)
+	public Map<String, Object> getSkuCheckByShopId() {
+		List<SkuCheck> lists = null;
+		try {
+			lists = skuCheckService.getAllSkuCheckList();
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			return HttpUtils.generateResponse("1", "服务器内部错误", null);
+		}
+		return HttpUtils.generateResponse("0", "请求成功", lists);
+	}
+	
+	/**
 	 * @author Josh Yang
 	 * @description 根据创建新盘点单
 	 * @date 2015-3-10

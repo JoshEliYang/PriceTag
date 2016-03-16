@@ -56,6 +56,24 @@ public class EquCheckController {
 	}
 
 	/**
+	 * @author johsnon
+	 * @param shopId
+	 * @return
+	 */
+	@ResponseBody
+	@RequestMapping(value = "/all", method = RequestMethod.GET)
+	public Map<String, Object> getEquCheckByShopId() {
+		List<EquCheck> lists = null;
+		try {
+			lists = equCheckService.getAllEquCheckList();
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			return HttpUtils.generateResponse("1", "服务器内部错误", null);
+		}
+		return HttpUtils.generateResponse("0", "请求成功", lists);
+	}
+	
+	/**
 	 * @author Josh Yang
 	 * @description 创建新盘点设备单
 	 * @date 2015-3-10

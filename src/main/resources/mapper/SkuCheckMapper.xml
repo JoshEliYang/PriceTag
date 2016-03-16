@@ -8,6 +8,10 @@
 		SELECT * FROM skuCheck WHERE shopId = #{shopId} ORDER BY id DESC;
 	</select>
 	
+	<select id="getAllSkuCheckList" resultType="SkuCheck">
+		SELECT * FROM skuCheck ORDER BY id DESC;
+	</select>
+	
 	<select id="getSkuCheckById" parameterType="String" resultType="SkuCheck">
 	    SELECT * FROM skuCheck WHERE id = #{id};
 	</select>

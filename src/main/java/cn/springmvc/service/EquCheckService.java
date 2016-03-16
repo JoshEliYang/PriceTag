@@ -8,6 +8,9 @@ public interface EquCheckService {
 
 	public List<EquCheck> getEquCheckListByShopId(String shopId)
 			throws Exception;
+	
+	public List<EquCheck> getAllEquCheckList()
+			throws Exception;
 
 	public EquCheck getEquCheckById(String id) throws Exception;
 	

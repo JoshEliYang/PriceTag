@@ -15,9 +15,12 @@ public class SkuCheckServiceImpl implements SkuCheckService {
 	@Autowired
 	private SkuCheckDAO skuCheckDao;
 
-	public List<SkuCheck> getSkuCheckListByShopId(String shopId)
-			throws Exception {
+	public List<SkuCheck> getSkuCheckListByShopId(String shopId) throws Exception {
 		return skuCheckDao.getSkuCheckListByShopId(shopId);
+	}
+
+	public List<SkuCheck> getAllSkuCheckList() throws Exception {
+		return skuCheckDao.getAllSkuCheckList();
 	}
 
 	public int saveOneSkuCheck(SkuCheck sku) throws Exception {
@@ -41,4 +44,5 @@ public class SkuCheckServiceImpl implements SkuCheckService {
 	public SkuCheck getSkuCheckById(String id) throws Exception {
 		return skuCheckDao.getSkuCheckById(id);
 	}
+
 }

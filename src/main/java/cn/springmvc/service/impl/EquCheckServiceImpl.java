@@ -15,9 +15,12 @@ public class EquCheckServiceImpl implements EquCheckService {
 	@Autowired
 	private EquCheckDAO equCheckDao;
 
-	public List<EquCheck> getEquCheckListByShopId(String shopId)
-			throws Exception {
+	public List<EquCheck> getEquCheckListByShopId(String shopId) throws Exception {
 		return equCheckDao.getEquCheckListByShopId(shopId);
+	}
+
+	public List<EquCheck> getAllEquCheckList() throws Exception {
+		return equCheckDao.getAllEquCheckList();
 	}
 
 	public int saveOneEquCheck(EquCheck sku) throws Exception {
@@ -41,4 +44,5 @@ public class EquCheckServiceImpl implements EquCheckService {
 		}
 		return 0;
 	}
+
 }

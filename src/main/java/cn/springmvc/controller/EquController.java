@@ -27,7 +27,7 @@ public class EquController {
 	
 	@ResponseBody
 	@RequestMapping(method = RequestMethod.GET)
-	public Map<String, Object> getEquCheckByShopId(@PathVariable String shopId) {
+	public Map<String, Object> getEquCheckByShopId() {
 		List<Equipment> lists = null;
 		try {
 			lists = equService.getAllEquipments();

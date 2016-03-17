@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import cn.springmvc.model.EquCheckDetail;
 import cn.springmvc.model.SkuCheckDetail;
+import cn.springmvc.model.difference;
 import cn.springmvc.service.EquCheckDetailService;
 
 import com.springmvc.utils.HttpUtils;
@@ -55,7 +56,7 @@ public class EquCheckDetailController {
 	 */
 	@ResponseBody
 	@RequestMapping(method = RequestMethod.POST)
-	public Map<String, Object> insertSkuDetail(@RequestBody List<EquCheckDetail> detail) {
+	public Map<String, Object> insertEquDetail(@RequestBody List<EquCheckDetail> detail) {
 		int res=0;
 		try {
 			res=equCheckDetailService.insertEquDetail(detail);
@@ -64,5 +65,24 @@ public class EquCheckDetailController {
 			return HttpUtils.generateResponse("1", "服务器内部错误", res);
 		}
 		return HttpUtils.generateResponse("0", "请求成功", res);
+	}
+	
+	/**
+	 * 
+	 * @param id1
+	 * @param id2
+	 * @return
+	 */
+	@ResponseBody
+	@RequestMapping(value="/{id1}/{id2}",method = RequestMethod.GET)
+	public Map<String, Object> difference(@PathVariable String id1,@PathVariable String id2) {
+		List<difference> diffList=null;
+		try {
+			diffList=equCheckDetailService.getEquDifference(id1, id2);
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			return HttpUtils.generateResponse("1", "服务器内部错误", null);
+		}
+		return HttpUtils.generateResponse("0", "请求成功", diffList);
 	}
 }

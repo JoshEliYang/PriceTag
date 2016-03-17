@@ -19,4 +19,8 @@ public class SkuCheckDetailServiceImpl implements SkuCheckDetailService {
 			throws Exception {
 		return skuCheckDetailDao.getAllDetailsBySkuCheckId(skuCheckId);
 	}
+
+	public int insertSkuDetail(List<SkuCheckDetail> detail) throws Exception {
+		return skuCheckDetailDao.insertSkuDetail(detail);
+	}
 }

@@ -7,4 +7,12 @@
 	<select id="getAllDetailsBySkuCheckId" parameterType="String" resultType="EquCheckDetail">
 		SELECT * FROM equCheckDetail WHERE equCheckId = #{skuCheckId} ORDER BY id DESC;
 	</select>
+	
+	<insert id="insertEquDetail" parameterType="EquCheckDetail">
+	INSERT INTO
+	equCheckDetail(equCheckId,equName,num)VALUES
+		<foreach collection="list" item="item" index="index" separator=",">
+			(#{item.equCheckId}, #{item.equName},#{item.num})
+		</foreach>
+	</insert>
 </mapper>

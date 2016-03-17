@@ -19,4 +19,8 @@ public class EquCheckDetailServiceImpl implements EquCheckDetailService{
 		
 		return equCheckDetailDao.getAllDetailsBySkuCheckId(skuCheckId);
 	}
+
+	public int insertEquDetail(List<EquCheckDetail> detail) throws Exception {
+		return equCheckDetailDao.insertEquDetail(detail);
+	}
 }

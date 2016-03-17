@@ -68,7 +68,7 @@ public class SkuCheckDetailController {
 	
 	@ResponseBody
 	@RequestMapping(value="/{id1}/{id2}",method = RequestMethod.GET)
-	public Map<String, Object> difference(@PathVariable String id1,@PathVariable String id2) {
+	public Map<String, Object> skuDifference(@PathVariable String id1,@PathVariable String id2) {
 		List<difference> diffList=null;
 		try {
 			diffList=skuCheckDetailService.getSkuDifference(id1, id2);

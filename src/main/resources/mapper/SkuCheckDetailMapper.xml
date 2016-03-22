@@ -7,14 +7,16 @@
 	<select id="getAllDetailsBySkuCheckId" parameterType="String"
 		resultType="SkuCheckDetail">
 		SELECT * FROM skuCheckDetail WHERE skuCheckId =
-		#{skuCheckId} ORDER BY id DESC;
+		#{skuCheckId};
 	</select>
 
 	<insert id="insertSkuDetail" parameterType="SkuCheckDetail">
-	INSERT INTO
-	skuCheckDetail(skuCheckId,goodsNo,goodsName,num)VALUES
-		<foreach collection="list" item="item" index="index" separator=",">
-			(#{item.skuCheckId}, #{item.goodsNo}, #{item.goodsName},#{item.num})
+		INSERT INTO
+		skuCheckDetail(skuCheckId,goodsNo,goodsName,num)VALUES
+		<foreach collection="list" item="item" index="index"
+			separator=",">
+			(#{item.skuCheckId}, #{item.goodsNo},
+			#{item.goodsName},#{item.num})
 		</foreach>
 	</insert>
 </mapper>

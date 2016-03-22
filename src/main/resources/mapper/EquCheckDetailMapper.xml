@@ -5,7 +5,7 @@
 
 <mapper namespace="cn.springmvc.dao.EquCheckDetailDAO">
 	<select id="getAllDetailsBySkuCheckId" parameterType="String" resultType="EquCheckDetail">
-		SELECT * FROM equCheckDetail WHERE equCheckId = #{skuCheckId} ORDER BY id DESC;
+		SELECT * FROM equCheckDetail WHERE equCheckId = #{skuCheckId};
 	</select>
 	
 	<insert id="insertEquDetail" parameterType="EquCheckDetail">

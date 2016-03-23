@@ -1,29 +1,58 @@
 package cn.springmvc.model;
 
 /**
- * This model only contains a part of data in DB.
- * (Because SkuExtra API just need goodsNo and goodsName)
+ * This model only contains a part of data in DB. (Because SkuExtra API just
+ * need goodsNo and goodsName)
+ * 
  * @author johsnon
  *
  */
 public class GoodsInfo {
-	String goods_no;
-	String goods_name;
+	String cargo_no;
+	String cargo_name;
+	float purchase_price;
+	float market_price;
+	float shop_price;
 
-	public String getGoods_no() {
-		return goods_no;
+
+	public String getCargo_no() {
+		return cargo_no;
 	}
 
-	public void setGoods_no(String goods_no) {
-		this.goods_no = goods_no;
+	public void setCargo_no(String cargo_no) {
+		this.cargo_no = cargo_no;
 	}
 
-	public String getGoods_name() {
-		return goods_name;
+	public String getCargo_name() {
+		return cargo_name;
 	}
 
-	public void setGoods_name(String goods_name) {
-		this.goods_name = goods_name;
+	public void setCargo_name(String cargo_name) {
+		this.cargo_name = cargo_name;
+	}
+
+	public float getPurchase_price() {
+		return purchase_price;
+	}
+
+	public void setPurchase_price(float purchase_price) {
+		this.purchase_price = purchase_price;
+	}
+
+	public float getMarket_price() {
+		return market_price;
+	}
+
+	public void setMarket_price(float market_price) {
+		this.market_price = market_price;
+	}
+
+	public float getShop_price() {
+		return shop_price;
+	}
+
+	public void setShop_price(float shop_price) {
+		this.shop_price = shop_price;
 	}
 
 }

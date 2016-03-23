@@ -9,6 +9,11 @@ import cn.springmvc.daoLvdi.SkuExtraDao;
 import cn.springmvc.model.GoodsInfo;
 import cn.springmvc.service.SkuExtraService;
 
+/**
+ * 
+ * @author johsnon
+ *
+ */
 @Service
 public class SkuExtraServiceImpl implements SkuExtraService {
 	@Autowired

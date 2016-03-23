@@ -5,7 +5,7 @@
 
 <mapper namespace="cn.springmvc.daoLvdi.SkuExtraDao">
 	<select id="getGoodsByNo" parameterType="String" resultType="GoodsInfo">
-		select goods_no,goods_name from e_goods_info
-		where goods_no=#{goodsNo}
+		select cargo_no,cargo_name,purchase_price,market_price,shop_price from e_goods_cargo
+		where cargo_no=#{goodsNo}
 	</select>
 </mapper>

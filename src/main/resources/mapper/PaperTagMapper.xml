@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.springmvc.dao.PaperTagDAO">
+	<select id="getPaperTagById" parameterType="int" resultType="PaperTag">
+		SELECT * FROM paperTag WHERE id = #{id} AND isDelete = 0 ; 
+	</select>
+	
+	<select id="getAllPaperTag" resultType="PaperTag">
+		SELECT * FROM paperTag WHERE isDELETE = 0;
+	</select>
+	
+	<insert id="generatePaperTag" parameterType="PaperTag" keyProperty="id" useGeneratedKeys="true" >
+		INSERT paperTag(`createDate`, `memo`, `isDelete`) VALUES (#{creationDate}, #{memo}, 0);
+	</insert>
+	
+	<update id="deletePaperTag" parameterType="int">
+		UPDATE paperTag SET isDelete = 1 WHERE id = #{id} ;
+	</update>
+</mapper>

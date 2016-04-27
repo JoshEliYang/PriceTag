@@ -16,6 +16,8 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
          <typeAlias alias="EquCheckDetail" type="cn.springmvc.model.EquCheckDetail"/>
          <typeAlias alias="Equipment" type="cn.springmvc.model.Equipment"/>
          <typeAlias alias="GoodsInfo" type="cn.springmvc.model.GoodsInfo"/>
+         <typeAlias alias="PaperTag" type="cn.springmvc.model.PaperTag"/>
+         <typeAlias alias="PaperTagDetail" type="cn.springmvc.model.PaperTagDetail"/>
     </typeAliases>
 
     <!-- 映射map -->

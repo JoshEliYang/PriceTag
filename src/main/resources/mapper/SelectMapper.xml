@@ -5,15 +5,17 @@
 <mapper namespace="cn.springmvc.dao.SelectDAO">
 
 	<select id="selectAllShop" resultType="Select">
-		SELECT DISTINCT shopId AS id, CASE shopId 
-		  WHEN  'KJG001' THEN '杨浦'
-          WHEN  'KJG002' THEN '大华' 
-          WHEN  'KJG003' THEN '徐汇'
-          ELSE '松江' END AS content
-          FROM PriceTagInfo;
+		SELECT
+		shopId AS id,
+		shopName AS content
+		FROM
+		shop
+		WHERE
+		shopId != 'KJG000'
 	</select>
-	
+
 	<select id="selectAllOrigin" resultType="String">
-		SELECT DISTINCT goodsOrigin FROM PriceTagInfo;
+		SELECT DISTINCT
+		goodsOrigin FROM PriceTagInfo;
 	</select>
 </mapper>

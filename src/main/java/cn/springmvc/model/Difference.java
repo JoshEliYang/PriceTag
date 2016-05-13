@@ -1,6 +1,6 @@
 package cn.springmvc.model;
 
-public class difference {
+public class Difference {
 	String name;
 	int param1;
 	int param2;
@@ -29,11 +29,11 @@ public class difference {
 		this.param2 = param2;
 	}
 	
-	public difference(){
+	public Difference(){
 		super();
 	}
 
-	public difference(String name, int param1, int param2) {
+	public Difference(String name, int param1, int param2) {
 		super();
 		this.name = name;
 		this.param1 = param1;

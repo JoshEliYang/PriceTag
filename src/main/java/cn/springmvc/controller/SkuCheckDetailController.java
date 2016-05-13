@@ -23,7 +23,7 @@ import com.springmvc.utils.HttpUtils;
 
 import cn.springmvc.model.SkuCheck;
 import cn.springmvc.model.SkuCheckDetail;
-import cn.springmvc.model.difference;
+import cn.springmvc.model.Difference;
 import cn.springmvc.service.SkuCheckDetailService;
 import cn.springmvc.service.SkuCheckService;
 
@@ -80,7 +80,7 @@ public class SkuCheckDetailController {
 	@ResponseBody
 	@RequestMapping(value="/{id1}/{id2}",method = RequestMethod.GET)
 	public Map<String, Object> skuDifference(@PathVariable String id1,@PathVariable String id2) {
-		List<difference> diffList=null;
+		List<Difference> diffList=null;
 		try {
 			diffList=skuCheckDetailService.getSkuDifference(id1, id2);
 		} catch (Exception ex) {
@@ -154,7 +154,7 @@ public class SkuCheckDetailController {
 	public void exportDifference (@PathVariable String id1,@PathVariable String id2, 
 			HttpServletResponse response){
 		PrintWriter writer = null;
-		List<difference> reports = null;
+		List<Difference> reports = null;
 		JSON json = null;
 		Map<String, Object> responseMap = null;
 		try{

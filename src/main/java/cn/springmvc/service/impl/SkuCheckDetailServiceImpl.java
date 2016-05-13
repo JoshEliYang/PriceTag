@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import cn.springmvc.dao.SkuCheckDetailDAO;
 import cn.springmvc.model.EquCheckDetail;
 import cn.springmvc.model.SkuCheckDetail;
-import cn.springmvc.model.difference;
+import cn.springmvc.model.Difference;
 import cn.springmvc.service.SkuCheckDetailService;
 
 @Service
@@ -32,8 +32,8 @@ public class SkuCheckDetailServiceImpl implements SkuCheckDetailService {
 	 * @param id1,id2
 	 *            sku_check表的ID
 	 */
-	public List<difference> getSkuDifference(String id1, String id2) throws Exception {
-		List<difference> diffList = new ArrayList();
+	public List<Difference> getSkuDifference(String id1, String id2) throws Exception {
+		List<Difference> diffList = new ArrayList();
 		List<SkuCheckDetail> detail1 = getAllDetailsBySkuCheckId(id1);
 		List<SkuCheckDetail> detail2 = getAllDetailsBySkuCheckId(id2);
 
@@ -66,11 +66,11 @@ public class SkuCheckDetailServiceImpl implements SkuCheckDetailService {
 					continue;
 			}
 
-			difference diff;
+			Difference diff;
 			if (changeFlag == false) {
-				diff = new difference(detail1.get(i).getGoodsName(), num1, num2);
+				diff = new Difference(detail1.get(i).getGoodsName(), num1, num2);
 			} else {
-				diff = new difference(detail1.get(i).getGoodsName(), num2, num1);
+				diff = new Difference(detail1.get(i).getGoodsName(), num2, num1);
 			}
 			diffList.add(diff);
 

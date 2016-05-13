@@ -23,7 +23,7 @@ import com.springmvc.utils.HttpUtils;
 
 import cn.springmvc.model.EquCheck;
 import cn.springmvc.model.EquCheckDetail;
-import cn.springmvc.model.difference;
+import cn.springmvc.model.Difference;
 import cn.springmvc.service.EquCheckDetailService;
 import cn.springmvc.service.EquCheckService;
 
@@ -86,7 +86,7 @@ public class EquCheckDetailController {
 	@ResponseBody
 	@RequestMapping(value="/{id1}/{id2}",method = RequestMethod.GET)
 	public Map<String, Object> equDifference(@PathVariable String id1,@PathVariable String id2) {
-		List<difference> diffList=null;
+		List<Difference> diffList=null;
 		try {
 			diffList=equCheckDetailService.getEquDifference(id1, id2);
 		} catch (Exception ex) {
@@ -159,7 +159,7 @@ public class EquCheckDetailController {
 	public void exportDifference (@PathVariable String id1,@PathVariable String id2, 
 			HttpServletResponse response){
 		PrintWriter writer = null;
-		List<difference> reports = null;
+		List<Difference> reports = null;
 		JSON json = null;
 		Map<String, Object> responseMap = null;
 		try{

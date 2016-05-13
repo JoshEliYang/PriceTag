@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 import cn.springmvc.dao.EquCheckDetailDAO;
 import cn.springmvc.model.EquCheckDetail;
-import cn.springmvc.model.difference;
+import cn.springmvc.model.Difference;
 import cn.springmvc.service.EquCheckDetailService;
 
 @Service
@@ -32,8 +32,8 @@ public class EquCheckDetailServiceImpl implements EquCheckDetailService {
 	 * @param id1,id2
 	 *            equ_check表的ID
 	 */
-	public List<difference> getEquDifference(String id1, String id2) throws Exception {
-		List<difference> diffList = new ArrayList();
+	public List<Difference> getEquDifference(String id1, String id2) throws Exception {
+		List<Difference> diffList = new ArrayList();
 		List<EquCheckDetail> detail1 = getAllDetailsBySkuCheckId(id1);
 		List<EquCheckDetail> detail2 = getAllDetailsBySkuCheckId(id2);
 
@@ -65,11 +65,11 @@ public class EquCheckDetailServiceImpl implements EquCheckDetailService {
 					continue;
 			}
 
-			difference diff;
+			Difference diff;
 			if (changeFlag == false) {
-				diff = new difference(detail1.get(i).getEquName(), param1, param2);
+				diff = new Difference(detail1.get(i).getEquName(), param1, param2);
 			} else {
-				diff = new difference(detail1.get(i).getEquName(), param2, param1);
+				diff = new Difference(detail1.get(i).getEquName(), param2, param1);
 			}
 			diffList.add(diff);
 

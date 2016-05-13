@@ -3,7 +3,7 @@ package cn.springmvc.service;
 import java.util.List;
 
 import cn.springmvc.model.SkuCheckDetail;
-import cn.springmvc.model.difference;
+import cn.springmvc.model.Difference;
 
 public interface SkuCheckDetailService {
 
@@ -11,5 +11,5 @@ public interface SkuCheckDetailService {
 	
 	public int insertSkuDetail(List<SkuCheckDetail> detail) throws Exception;
 	
-	public List<difference> getSkuDifference(String id1,String id2)throws Exception;
+	public List<Difference> getSkuDifference(String id1,String id2)throws Exception;
 }

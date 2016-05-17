@@ -32,6 +32,7 @@ public class GoodsController {
 	 */
 	@ResponseBody
 	@RequestMapping(method = RequestMethod.GET)
+	
 	public Map<String, Object> selectAllGoods() {
 		List<Goods> list = null;
 		

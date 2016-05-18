@@ -8,4 +8,6 @@ public interface UserDAO {
 	public User getSingleUser(User u);
 
 	public newUser changePassword(newUser u);
+	
+	public User resetUserInfo(User u);
 }

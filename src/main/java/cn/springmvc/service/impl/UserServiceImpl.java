@@ -22,4 +22,8 @@ public class UserServiceImpl implements UserService {
 		
 		return userDao.changePassword(u);
 	}
+	
+	public User resetUserInfo(User u) throws Exception {
+		return userDao.resetUserInfo(u);
+	}
 }

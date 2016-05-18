@@ -17,4 +17,13 @@
 		WHERE
 		username = #{username};
 	</select>
+	
+	<select id="resetUserInfo" parameterType="User" resultType="User">
+		Update user
+		SET
+		username = #{username},
+		email = #{email}
+		WHERE
+		id = #{id};
+	</select>
 </mapper>

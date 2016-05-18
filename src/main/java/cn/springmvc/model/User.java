@@ -11,6 +11,8 @@ public class User {
 	private String shopId;
 	
 	private String role;
+	
+	private String email;
 
 	public int getId() {
 		return id;
@@ -51,24 +53,34 @@ public class User {
 	public void setRole(String role) {
 		this.role = role;
 	}
+	
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
 
 	public User() {
 		super();
 	}
 
 	public User(int id, String username, String password, String shopId,
-			String role) {
+			String role,String email) {
 		super();
 		this.id = id;
 		this.username = username;
 		this.password = password;
 		this.shopId = shopId;
 		this.role = role;
+		this.email = email;
 	}
 
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", username=" + username + ", password="
-				+ password + ", shopId=" + shopId + ", role=" + role + "]";
+				+ password + ", shopId=" + shopId + ", role=" + role + ", email" + email + "]";
 	}
+	
 }

@@ -9,6 +9,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
          <typeAlias alias="Goods" type="cn.springmvc.model.Goods"/>
          <typeAlias alias="Select" type="cn.springmvc.model.Select"/>
          <typeAlias alias="RequestParams" type="cn.springmvc.model.RequestParams"/>
+         <typeAlias alias="PaymentDetail" type="cn.springmvc.model.PaymentDetail"/>
          <typeAlias alias="newUser" type="cn.springmvc.model.newUser"/>
          <typeAlias alias="User" type="cn.springmvc.model.User"/>
          <typeAlias alias="SkuCheck" type="cn.springmvc.model.SkuCheck"/>

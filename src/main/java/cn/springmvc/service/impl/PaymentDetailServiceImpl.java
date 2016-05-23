@@ -16,15 +16,13 @@ public class PaymentDetailServiceImpl implements PaymentDetailService {
 	@Autowired
 	private PaymentDetailDAO paymentDetailDAO;
 	
-	public List<PaymentDetail> getPaymentDetail() throws Exception {
+	public List<PaymentDetail> getPaymentDetail(String date) throws Exception {
 		
-		return paymentDetailDAO.getPaymentDetail();
+		return paymentDetailDAO.getPaymentDetail(date);
 		
 	}
 	
-	public List<PaymentDetail> getsPaymentDetail(String ORDER_CREATE_TIME) throws Exception {
-		
-		return paymentDetailDAO.getsPaymentDetail(ORDER_CREATE_TIME);
-		
+	public List<PaymentDetail> getAllDetailsByOrdtime(String date) throws Exception {
+		return paymentDetailDAO.getAllDetailsByOrdtime(date);
 	}
 }

@@ -100,11 +100,12 @@ public class SkuCheckDetailController {
 	@RequestMapping(value = "/{skuCheckId}/excelExport", method = RequestMethod.GET)
 	public void exportSkucheckdetails(@PathVariable String skuCheckId, 
 			HttpServletResponse response){
+		
 		PrintWriter writer = null;
 		List<SkuCheckDetail> reports = null;
 		JSON json = null;
 		Map<String, Object> responseMap = null;
-		try{
+		try {
 			writer = response.getWriter();
 			responseMap = new HashMap<String, Object>();
 			

@@ -4,7 +4,26 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="cn.springmvc.dao.UserDAO">
-	<select id="getSingleUser" resultType="User">
-		select * from user where username = #{username} and password = #{password} ; 
+	<select id="getSingleUser" parameterType="User" resultType="User">
+		SELECT *
+		FROM user
+		WHERE username = #{username} AND password =#{password} ;
+	</select>
+
+	<select id="changePassword" parameterType="newUser" resultType="User">
+		Update user
+		SET
+		password =#{newPassword}
+		WHERE
+		username = #{username};
+	</select>
+	
+	<select id="resetUserInfo" parameterType="User" resultType="User">
+		Update user
+		SET
+		username = #{username},
+		email = #{email}
+		WHERE
+		id = #{id};
 	</select>
 </mapper>

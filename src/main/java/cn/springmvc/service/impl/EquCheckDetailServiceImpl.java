@@ -80,4 +80,14 @@ public class EquCheckDetailServiceImpl implements EquCheckDetailService {
 
 		return diffList;
 	}
+
+	public int addEquDetailNum(String equCheckId, String equName, String num) {
+		
+		return equCheckDetailDao.addEquDetailNum(equCheckId, equName, num);
+	}
+
+	public int subEquDetailNum(String equCheckId, String equName, String num) {
+		
+		return equCheckDetailDao.subEquDetailNum(equCheckId, equName, num);
+	}
 }

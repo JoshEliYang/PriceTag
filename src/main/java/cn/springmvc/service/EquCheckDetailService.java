@@ -12,4 +12,8 @@ public interface EquCheckDetailService {
 	public int insertEquDetail(List<EquCheckDetail> detail) throws Exception;
 	
 	public List<Difference> getEquDifference(String id1,String id2)throws Exception;
+	
+	public int addEquDetailNum(String equCheckId , String equName, String num);
+	
+	public int subEquDetailNum(String equCheckId, String equName, String num);
 }

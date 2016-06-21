@@ -82,4 +82,15 @@ public class SkuCheckDetailServiceImpl implements SkuCheckDetailService {
 		return diffList;
 	}
 
+
+	public int addSkuDetailNum(String skuCheckId, String goodsNo, String num) {
+		
+		return skuCheckDetailDao.addSkuDetailNum(skuCheckId, goodsNo, num);
+	}
+
+	public int subSkuDetailNum(String skuCheckId, String goodsNo, String num) {
+		
+		return skuCheckDetailDao.subSkuDetailNum(skuCheckId, goodsNo, num);
+	}
+	
 }

@@ -15,4 +15,15 @@
 			(#{item.equCheckId}, #{item.equName},#{item.num})
 		</foreach>
 	</insert>
+	
+	<update id="addEquDetailNum" parameterType="String" >
+		UPDATE equCheckDetail SET num = num + #{2}
+		WHERE equCheckId = #{0} AND equName = #{1}
+	</update>
+	
+	<update id="subEquDetailNum" parameterType="String" >
+		UPDATE equCheckDetail SET num = num - #{2}
+		WHERE equCheckId = #{0} AND equName = #{1}
+	</update>
+	
 </mapper>

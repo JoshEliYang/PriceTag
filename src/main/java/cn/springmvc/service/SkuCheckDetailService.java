@@ -12,4 +12,8 @@ public interface SkuCheckDetailService {
 	public int insertSkuDetail(List<SkuCheckDetail> detail) throws Exception;
 	
 	public List<Difference> getSkuDifference(String id1,String id2)throws Exception;
+	
+	public int addSkuDetailNum(String skuCheckId , String goodsNo, String num);
+	
+	public int subSkuDetailNum(String skuCheckId, String goodsNo, String num);
 }

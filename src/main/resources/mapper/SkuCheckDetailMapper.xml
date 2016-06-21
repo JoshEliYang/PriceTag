@@ -19,4 +19,15 @@
 			#{item.goodsName},#{item.num})
 		</foreach>
 	</insert>
+
+	<update id="addSkuDetailNum" parameterType="String" >
+		UPDATE skuCheckDetail SET num = num + #{2}
+		WHERE skuCheckId = #{0} AND goodsNo = #{1}
+	</update>
+	
+	<update id="subSkuDetailNum" parameterType="String" >
+		UPDATE skuCheckDetail SET num = num - #{2}
+		WHERE skuCheckId = #{0} AND goodsNo = #{1}
+	</update>
+
 </mapper>

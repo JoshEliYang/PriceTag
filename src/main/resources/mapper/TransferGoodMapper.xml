@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.springmvc.dao.TransferGoodDAO">
+
+	<insert id="insertTransferGood" parameterType="TransferGood">
+		INSERT INTO
+		transferGood(orderId, goodType, goodNo, goodName, num) VALUES
+		<foreach collection="list" item="item" index="index"
+			separator=",">
+			(#{item.orderId},#{item.goodType},#{item.goodNo},#{item.goodName},#{item.num})
+		</foreach>	
+	</insert>
+
+	<delete id="deleteTransferGoodById" parameterType="int">
+		DELETE FROM transferGood
+		WHERE id =#{id};
+	</delete>
+	
+	<delete id="deleteTransferGoodsByOrderId" parameterType="int">
+		DELETE FROM transferGood
+		WHERE orderId =#{orderId};
+	</delete>
+
+	<!--  可修改的只是数量 -->
+	<update id="updateTransferGood" parameterType="TransferGood">
+		UPDATE transferGood
+		SET num= #{num}
+		WHERE id = #{id};
+	</update>
+
+	<select id="getTransferGoodsByOrderId" resultType="TransferGood">
+		select * from transferGood
+		where orderId = #{orderId} ;
+	</select>
+
+	<select id="getTransferGoodById" resultType="TransferGood">
+		select * from transferGood
+		where id = #{id} ;
+	</select>
+
+</mapper>

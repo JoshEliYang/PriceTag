@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.springmvc.dao.TransferOrderDAO">
+	  
+	  
+	<select id="getDealedTransferOrderListByApplyShopId" resultType="TransferOrder">
+		select * from transferOrder 
+ 		where applyShopId = #{applyShopId} AND dealDate is not null AND isDeleted = False
+ 		ORDER BY id DESC ;
+	</select>
+	  
+	<select id="getUndealTransferOrderListByApplyShopId" resultType="TransferOrder">
+		select * from transferOrder 
+ 		where applyShopId = #{applyShopId} AND dealDate is null AND isDeleted = False
+ 		ORDER BY id DESC;
+	</select>
+	  
+	<select id="getDealedTransferOrderListByDealShopId" resultType="TransferOrder">
+		select * from transferOrder 
+ 		where dealShopId = #{dealShopId} AND dealDate is not null AND isDeleted = False 
+ 		ORDER BY id DESC;
+	</select>
+	  
+	<select id="getUndealTransferOrderListByDealShopId" resultType="TransferOrder">
+		select * from transferOrder 
+		where dealShopId = #{dealShopId} AND dealDate is null AND isDeleted = False
+		ORDER BY id DESC;
+	</select>
+	  
+	  
+	<insert id="insertTransferOrder" parameterType="TransferOrder"
+		keyProperty="id" useGeneratedKeys="true">
+		INSERT INTO
+		transferOrder(actor, applyShopId, handler, dealShopId, applyDate,dealDate, isDeleted)
+		VALUES(#{actor},#{applyShopId},#{handler},#{dealShopId},#{applyDate},#{dealDate}, #{isDeleted});
+	</insert>
+	
+	<update id="deleteTransferOrder" >
+		UPDATE transferOrder
+		SET isDeleted=True WHERE id= #{id};
+	</update>
+
+	<update id="updateTransferOrder" parameterType="TransferOrder">
+		UPDATE transferOrder
+		SET handler= #{handler} , dealDate = #{dealDate} WHERE `id`= #{id};
+	</update>
+
+	<select id="getTransferOrderListByDealShopId" resultType="TransferOrder">
+		select * from transferOrder 
+		where dealShopId = #{dealShopId} AND isDeleted = False 
+		ORDER BY id DESC;
+	</select>
+
+	<select id="getTransferOrderById" resultType="TransferOrder">
+		select * from transferOrder 
+		where Id = #{Id} 
+		ORDER BY id DESC ;
+	</select>
+
+	<select id="getTransferOrderListByApplyShopId" resultType="TransferOrder">
+		select * from transferOrder 
+		where applyShopId = #{applyShopId} AND isDeleted = False
+		ORDER BY id DESC ;
+	</select>
+</mapper>
+      

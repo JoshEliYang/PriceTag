@@ -93,8 +93,8 @@ public class PriceTagServiceImpl implements PriceTagService {
 	}
 
 	// 获得所有已删除价签
-	public List<PriceTag> selectAllDeletePriceTags() throws Exception {
-		return priceTagDao.selectAllDeletedPriceTags();
+	public List<PriceTag> selectAllDeletePriceTags(RequestParams rp) throws Exception {
+		return priceTagDao.selectAllDeletedPriceTags(rp);
 	}
 
 	// 复位已删除价签
@@ -111,5 +111,15 @@ public class PriceTagServiceImpl implements PriceTagService {
 			return -1;
 		}
 		return 0;
+	}
+
+	public String getpriceTagsAll(RequestParams rp) throws Exception {
+		// TODO Auto-generated method stub
+		return priceTagDao.getpriceTagsAll(rp);
+	}
+
+	public String getdeleteTagsAll() throws Exception {
+		// TODO Auto-generated method stub
+		return priceTagDao.getTagsAll();
 	}
 }

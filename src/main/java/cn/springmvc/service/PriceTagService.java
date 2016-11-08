@@ -24,12 +24,16 @@ public interface PriceTagService {
 	
 	// 按条件查询价签
 	public List<PriceTag> selectPriceTagsByParams(RequestParams rp) throws Exception;
+	//价签总数
+	public String getpriceTagsAll(RequestParams rp) throws Exception;
 	
+	//删除价签总数
+	public String getdeleteTagsAll() throws Exception;
 	// 查询单个价签
 	public PriceTag selectPriceTagById(String id) throws Exception;
 	
 	// 查询所有已删除价签
-	public List<PriceTag> selectAllDeletePriceTags() throws Exception;
+	public List<PriceTag> selectAllDeletePriceTags(RequestParams rp) throws Exception;
 	
 	// 复位已删除价签
 	public int rollbackDeletedPriceTag(String id) throws Exception; 

@@ -53,6 +53,7 @@ public class EquCheckController {
 			return HttpUtils.generateResponse("1", "服务器内部错误", null);
 		}
 		return HttpUtils.generateResponse("0", "请求成功", lists);
+		
 	}
 
 	/**

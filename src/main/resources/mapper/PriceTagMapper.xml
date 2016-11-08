@@ -50,18 +50,38 @@
          	<if test="keyWord != null">
          		AND goodsName LIKE CONCAT('%','${keyWord}','%' )
          	</if>
+         	LIMIT #{limit} OFFSET #{offset}
          	;
          </select>
                   
+         <select id="getpriceTagsAll" parameterType="RequestParams" resultType="String" >
+         	SELECT count(*) FROM PriceTagInfo WHERE 1 =1 and isDelete = 0 
+         	<if test ="shopId != null">
+         		AND shopId = #{shopId}
+         	</if>
+         	<if test="origin != null">
+         		AND goodsOrigin = #{origin}
+         	</if>
+         	<if test="keyWord != null">
+         		AND goodsName LIKE CONCAT('%','${keyWord}','%' )
+         	</if>
+         	LIMIT #{limit} OFFSET #{offset}
+         	;
+         </select>        
+          
          <update id="updatePriceTagByGoodsNo" parameterType="PriceTag">
-            UPDATE PriceTagInfo SET 
+            UPDATE PriceTagInfo SET
          	goodsName = #{goodsName},unit = #{unit}, specifications = #{specifications},
          	goodsOrigin = #{goodsOrigin}, salesPrice = #{salesPrice}, propmPrice = #{propmPrice}, 
          	marketPrice = #{marketPrice} WHERE goodsNo = #{goodsNo};
          </update>
          
-         <select id="selectAllDeletedPriceTags" resultType="PriceTag">
-         	SELECT * FROM PriceTagInfo WHERE isDelete = 1;
+         <select id="selectAllDeletedPriceTags" parameterType="RequestParams" resultType="PriceTag">
+         	SELECT * FROM PriceTagInfo WHERE isDelete = 1 LIMIT #{limit} OFFSET #{offset};
+         </select>
+         
+         <select id="getTagsAll"  resultType="String">
+         	SELECT count(*) FROM PriceTagInfo WHERE isDelete = 1 ;
          </select>
          
          <update id="rollbackDeletedPriceTag" parameterType="String">

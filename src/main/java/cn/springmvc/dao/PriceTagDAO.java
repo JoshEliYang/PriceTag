@@ -25,11 +25,16 @@ public interface PriceTagDAO {
 	// 查询价签
 	public List<PriceTag> selectPriceTagsByParams(RequestParams rp);
 	
+	// 价签总数
+	public String getpriceTagsAll(RequestParams rp);
+	
+	// 删除价签总数
+	public String getTagsAll();
 	// 获得单个价签
 	public PriceTag selectPriceTagsById(String id);
 	
 	// 获得所有已删除价签
-	public List<PriceTag> selectAllDeletedPriceTags();
+	public List<PriceTag> selectAllDeletedPriceTags(RequestParams rp);
 	
 	// 复位删除价签
 	public int rollbackDeletedPriceTag(String id);

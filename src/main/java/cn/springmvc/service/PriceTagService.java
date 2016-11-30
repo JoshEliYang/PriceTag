@@ -4,6 +4,9 @@ import java.util.List;
 
 import cn.springmvc.model.PriceTag;
 import cn.springmvc.model.RequestParams;
+import cn.springmvc.model.SearchPriceTag;
+import cn.springmvc.model.SelectPriceTag;
+import cn.springmvc.model.priceTagInsert.PriceTagPacks;
 
 public interface PriceTagService {
 	
@@ -37,4 +40,17 @@ public interface PriceTagService {
 	
 	// 复位已删除价签
 	public int rollbackDeletedPriceTag(String id) throws Exception; 
+	
+	//搜索价签
+	public List<SearchPriceTag> searchPriceTagInfo(SelectPriceTag taginfo) throws Exception; 
+	
+	public String getCountPriceTag(SelectPriceTag taginfo) throws Exception;
+
+	
+	public String insertPriceTagg(PriceTagPacks param);
+
+	public String syncPriceTag(String shopId);
+	
+	//插入价签
+	
 }

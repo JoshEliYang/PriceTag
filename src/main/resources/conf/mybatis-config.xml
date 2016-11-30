@@ -20,6 +20,11 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
          <typeAlias alias="GoodsInfo" type="cn.springmvc.model.GoodsInfo"/>
          <typeAlias alias="TransferGood" type="cn.springmvc.model.TransferGood"/>
          <typeAlias alias="TransferOrder" type="cn.springmvc.model.TransferOrder"/>
+         <typeAlias alias="SelectPriceTag" type="cn.springmvc.model.SelectPriceTag"/>
+         <typeAlias alias="SearchPriceTag" type="cn.springmvc.model.SearchPriceTag"/>
+         <typeAlias alias="TagNum" type="cn.springmvc.model.TagNum"/>
+         <typeAlias alias="CopyTagTemp" type="cn.springmvc.model.CopyTagTemp"/>
+         <typeAlias alias="InsertList" type="cn.springmvc.model.InsertList"/>
     </typeAliases>
 
     <!-- 映射map -->

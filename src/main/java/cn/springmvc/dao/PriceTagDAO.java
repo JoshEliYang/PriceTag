@@ -2,8 +2,12 @@ package cn.springmvc.dao;
 
 import java.util.List;
 
+import cn.springmvc.model.CopyTagTemp;
+import cn.springmvc.model.InsertList;
 import cn.springmvc.model.PriceTag;
 import cn.springmvc.model.RequestParams;
+import cn.springmvc.model.TagNum;
+import cn.springmvc.model.TagNum;
 
 public interface PriceTagDAO {
 
@@ -38,4 +42,16 @@ public interface PriceTagDAO {
 	
 	// 复位删除价签
 	public int rollbackDeletedPriceTag(String id);
+
+	
+	public List<TagNum> getNoDetail(String shopId);
+
+	public int updateTag(CopyTagTemp tagTemp);
+
+	public String checkIfList(String string, String goodsNo);
+
+	public int insertTagListDelite(InsertList insertList);
+
+
+	
 }

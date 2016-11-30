@@ -87,4 +87,38 @@
          <update id="rollbackDeletedPriceTag" parameterType="String">
          	UPDATE PriceTagInfo SET isDelete='0' WHERE id =#{id};
          </update>
+         
+         <select id="getNoDetail" parameterType="String" resultType="TagNum">
+         	SELECT goodsNo,shopId FROM priceTagBak where shopId =#{shopId};
+         </select>
+         
+         <update id="updateTag" parameterType="CopyTagTemp" >
+         	 <!-- <foreach collection="list" item="item" index="index"  separator=";"> -->
+				update priceTagBak 
+				<!-- priceTagInfo -->
+				<set>
+				  salesPrice=${salesPrice},propmPrice=${propmPrice},marketPrice=${marketPrice}
+				</set>
+				where goodsNo = '${goodsNo}' and shopId = '${shopId}'
+	   		 <!-- </foreach> -->
+         </update>
+         
+         
+         <select id="checkIfList"  resultType="String">
+         	select  count(*)  from priceTagBak   where shopId = #{0} and goodsNo=#{1}  
+         </select>
+         
+         
+          <insert id="insertTagListDelite" parameterType="InsertList" keyProperty="int">
+			INSERT INTO priceTagBak  VALUES 
+			(null, 
+			#{tagId},
+			 #{tagname}, 
+			 #{color}, 
+			 #{uncolor}, 
+			 #{basicId});
+			 
+         </insert>
+         
+         
 </mapper>

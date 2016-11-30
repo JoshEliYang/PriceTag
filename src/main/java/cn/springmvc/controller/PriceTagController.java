@@ -17,7 +17,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.springmvc.utils.HttpUtils;
 
 import cn.springmvc.model.PriceTag;
+import cn.springmvc.model.SearchPriceTag;
+import cn.springmvc.model.SelectPriceTag;
 import cn.springmvc.model.RequestParams;
+import cn.springmvc.model.priceTagInsert.PriceTagPacks;
 import cn.springmvc.service.PriceTagService;
 
 @Scope("prototype")
@@ -244,4 +247,61 @@ public class PriceTagController {
 
 		return HttpUtils.generateResponseFour("0", "查询成功", tags,tagAount);
 	}
+	
+	
+	/*搜索价签*/
+	
+	@ResponseBody
+	@RequestMapping(value = "/tag", method = RequestMethod.POST)
+	public Map<String, Object> searchPriceTag(@RequestBody SelectPriceTag taginfo) {
+		List<SearchPriceTag> tags = null;
+		String getTagCount;
+		try {
+			tags = priceTagService.searchPriceTagInfo(taginfo);
+			getTagCount = priceTagService.getCountPriceTag(taginfo);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return HttpUtils.generateResponse("1", "请求失败", null);
+		}
+
+		return HttpUtils.generateResponseFour("0", "查询成功", tags,getTagCount);
+	}
+	
+	
+	/*插入标签*/
+	
+	@ResponseBody
+	@RequestMapping(value = "/insertag", method = RequestMethod.POST)
+	public Map<String, Object> insertPriceTag(@RequestBody PriceTagPacks param) {
+		//List<PriceTagPacks> param1 = null;
+		String count;
+		try {
+			count = priceTagService.insertPriceTagg(param);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return HttpUtils.generateResponse("1", "请求失败", null);
+		}
+
+		return HttpUtils.generateResponse("0", "查询成功",count);
+	}
+	
+	/*同步标签*/
+	
+	@ResponseBody
+	@RequestMapping(value = "/tag/sync/{shopId}", method = RequestMethod.GET)
+	public Map<String, Object> copyPriceTag(@PathVariable String shopId) {
+		//List<PriceTagPacks> param1 = null;
+		
+		String count;
+		try {
+			count = priceTagService.syncPriceTag(shopId);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return HttpUtils.generateResponse("1", "请求失败", null);
+		}
+
+		return HttpUtils.generateResponse("0", "查询成功",count);
+	}
+	
+	
 }

@@ -107,8 +107,9 @@ public class PriceTagServiceImpl implements PriceTagService {
 	}
 
 	// 获得所有已删除价签
-	public List<PriceTag> selectAllDeletePriceTags(RequestParams rp)
-			throws Exception {
+
+	public List<PriceTag> selectAllDeletePriceTags(RequestParams rp) throws Exception {
+
 		return priceTagDao.selectAllDeletedPriceTags(rp);
 	}
 
@@ -137,6 +138,7 @@ public class PriceTagServiceImpl implements PriceTagService {
 		// TODO Auto-generated method stub
 		return priceTagDao.getTagsAll();
 	}
+
 
 	/*
 	 * public List<SearchPriceTag> searchPriceTagInfo(SelectPriceTag taginfo)

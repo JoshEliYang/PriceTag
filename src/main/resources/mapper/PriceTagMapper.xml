@@ -117,8 +117,6 @@
 			 #{color}, 
 			 #{uncolor}, 
 			 #{basicId});
-			 
          </insert>
          
-        
 </mapper>

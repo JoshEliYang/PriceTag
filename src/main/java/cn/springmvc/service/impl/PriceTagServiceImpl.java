@@ -1,9 +1,6 @@
 package cn.springmvc.service.impl;
 
-import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,7 +14,6 @@ import cn.springmvc.model.RequestParams;
 import cn.springmvc.model.SearchPriceTag;
 import cn.springmvc.model.SelectPriceTag;
 import cn.springmvc.model.TagNum;
-import cn.springmvc.model.priceTagInsert.GoodsParam;
 import cn.springmvc.model.priceTagInsert.PriceTagPacks;
 import cn.springmvc.service.PriceTagService;
 
@@ -107,9 +103,7 @@ public class PriceTagServiceImpl implements PriceTagService {
 	}
 
 	// 获得所有已删除价签
-
 	public List<PriceTag> selectAllDeletePriceTags(RequestParams rp) throws Exception {
-
 		return priceTagDao.selectAllDeletedPriceTags(rp);
 	}
 
@@ -138,7 +132,6 @@ public class PriceTagServiceImpl implements PriceTagService {
 		// TODO Auto-generated method stub
 		return priceTagDao.getTagsAll();
 	}
-
 
 	/*
 	 * public List<SearchPriceTag> searchPriceTagInfo(SelectPriceTag taginfo)
@@ -248,4 +241,5 @@ public class PriceTagServiceImpl implements PriceTagService {
 
 		return String.valueOf(results);
 	}
+
 }

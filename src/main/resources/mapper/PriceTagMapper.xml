@@ -89,12 +89,12 @@
          </update>
          
          <select id="getNoDetail" parameterType="String" resultType="TagNum">
-         	SELECT goodsNo,shopId FROM priceTagBak where shopId =#{shopId};
+         	SELECT goodsNo,shopId FROM PriceTagInfo where shopId =#{shopId};
          </select>
          
          <update id="updateTag" parameterType="CopyTagTemp" >
          	 <!-- <foreach collection="list" item="item" index="index"  separator=";"> -->
-				update priceTagBak 
+				update PriceTagInfo 
 				<!-- priceTagInfo -->
 				<set>
 				  salesPrice=${salesPrice},propmPrice=${propmPrice},marketPrice=${marketPrice}
@@ -105,12 +105,12 @@
          
          
          <select id="checkIfList"  resultType="String">
-         	select  count(*)  from priceTagBak   where shopId = #{0} and goodsNo=#{1}  
+         	select  count(*)  from PriceTagInfo   where shopId = #{0} and goodsNo=#{1}  
          </select>
          
          
           <insert id="insertTagListDelite" parameterType="InsertList" keyProperty="int">
-			INSERT INTO priceTagBak  VALUES 
+			INSERT INTO PriceTagInfo  VALUES 
 			(null, 
 			#{tagId},
 			 #{tagname}, 

@@ -24,17 +24,23 @@
 	<select id="getNoDetail" parameterType="TagNum" resultType="CopyTagTemp">
 		select cargo_no as goodsNo , purchase_price as propmPrice
 		,market_price as marketPrice, shop_price as salesPrice from
-		e_goods_cargo <where>  cargo_no in (
-		<foreach collection="list" item="item" index="index"
-			separator=",">
-			#{item.goodsNo}
-		</foreach></where> 
+		e_goods_cargo
+		<where>
+			cargo_no in (
+			<foreach collection="list" item="item" index="index"
+				separator=",">
+				#{item.goodsNo}
+			</foreach>
+		</where>
 		)
 	</select>
-	
-	
+
+
 	<select id="searchListDetail" resultType="InsertList">
-		SELECT a.cargo_name as goodsName ,a.cargo_no as goodsNo ,a.market_price as marketPrice ,a.shop_price as salesPrice,a.purchase_price as propmPrice ,cargo_id as qrCode  FROM e_goods_cargo a LEFT JOIN e_goods_info b ON
-		 (a.goods_id = b.goods_id) WHERE a.cargo_no = #{1} and b.gc_type=#{0}
+		SELECT a.cargo_name as
+		goodsName ,a.cargo_no as goodsNo ,a.market_price as marketPrice
+		,a.shop_price as salesPrice,a.purchase_price as propmPrice ,cargo_id
+		as qrCode FROM e_goods_cargo a LEFT JOIN e_goods_info b ON
+		(a.goods_id = b.goods_id) WHERE a.cargo_no = #{1} and b.gc_type=#{0}
 	</select>
 </mapper>

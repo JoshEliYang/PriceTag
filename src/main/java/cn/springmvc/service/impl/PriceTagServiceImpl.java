@@ -61,8 +61,7 @@ public class PriceTagServiceImpl implements PriceTagService {
 		try {
 			// 判断价签是否存在
 			int id = pt.getId();
-			PriceTag priceTag = priceTagDao.selectPriceTagsById(String
-					.valueOf(id));
+			PriceTag priceTag = priceTagDao.selectPriceTagsById(String.valueOf(id));
 			if (priceTag == null) {
 				return -2;
 			}
@@ -82,8 +81,7 @@ public class PriceTagServiceImpl implements PriceTagService {
 	}
 
 	// 条件搜索价签
-	public List<PriceTag> selectPriceTagsByParams(RequestParams rp)
-			throws Exception {
+	public List<PriceTag> selectPriceTagsByParams(RequestParams rp) throws Exception {
 		return priceTagDao.selectPriceTagsByParams(rp);
 	}
 
@@ -144,58 +142,62 @@ public class PriceTagServiceImpl implements PriceTagService {
 		return searchPriceTagDao.getCountPriceTag(taginfo);
 	}
 
-	public List<SearchPriceTag> searchPriceTagInfo(SelectPriceTag taginfo)
-			throws Exception {
+	public List<SearchPriceTag> searchPriceTagInfo(SelectPriceTag taginfo) throws Exception {
 		// TODO Auto-generated method stub
 		return searchPriceTagDao.searchPriceTagInfoByA(taginfo);
 
 	}
 
+	List<InsertList> list = null;
+
 	public String insertPriceTagg(PriceTagPacks param) {
-		// TODO Auto-generated method stub
-		
+
 		int count = 0;
-		
-		for (int i = 0;i < param.getShops().size();i++){
-			for(int j = 0;j<param.getGoods().size();j++){
-				
+
+		for (int i = 0; i < param.getShops().size(); i++) {
+			for (int j = 0; j < param.getGoods().size(); j++) {
+
 				String a = param.getShops().get(i);
 				String b = param.getGoods().get(j).getGoodsNo();
-				//priceTagDao.checkIfList(param.getGoods().get(j).getGoodsNo(),param.getShops().get(i));
-				
+				// priceTagDao.checkIfList(param.getGoods().get(j).getGoodsNo(),param.getShops().get(i));
 
-				String flag = priceTagDao.checkIfList(param.getShops().get(i),param.getGoods().get(j).getGoodsNo());
-	
-				
-				if(flag.equals("0")){
-					
-					count = count +1;
-					List<InsertList> list = null;
-					
-					list =  searchPriceTagDao.searchListDetail(param.getEcg(),param.getGoods().get(j).getGoodsNo());
-					
-					list.get(0).setQrCode("http://g-super.glcp.com.cn/gapp/category/goodList/spxq/index.htm?goodsXq_cid="+list.get(0).getQrCode());
+				String flag = priceTagDao.checkIfList(param.getShops().get(i), param.getGoods().get(j).getGoodsNo());
+
+				if (flag.equals("0")) {
+
+					count = count + 1;
+
+					list = searchPriceTagDao.searchListDetail(param.getEcg(), param.getGoods().get(j).getGoodsNo());
+
+					list.get(0)
+							.setQrCode("http://g-super.glcp.com.cn/gapp/category/goodList/spxq/index.htm?goodsXq_cid="
+									+ list.get(0).getQrCode());
 					list.get(0).setUnit(param.getGoods().get(j).getUnit());
 					list.get(0).setSpecifications(param.getGoods().get(j).getSpecifications());
 					list.get(0).setGoodsOrigin(param.getGoods().get(j).getGoodsOrigin());
 					list.get(0).setShopId(param.getShops().get(i));
-					
-					List<InsertList> lidst = list;
-					
-					
-					int v =  priceTagDao.insertTagListDelite(list.get(0));
-					
-					
-					//List<InsertList> lisst =  searchPriceTagDao.searchListDetail(param.getEcg(),param.getGoods().get(j).getGoodsNo());
-					
-					//priceTagDao.insertList(param.getShops().get(i),param.getGoods().get(j).getGoodsNo());
-				
+
+					priceTagDao.insertPriceTag(new PriceTag() {
+						{
+							this.setShopId(list.get(0).getShopId());
+							this.setGoodsNo(list.get(0).getGoodsNo());
+							this.setGoodsName(list.get(0).getGoodsName());
+							this.setUnit(list.get(0).getUnit());
+							this.setSpecifications(list.get(0).getSpecifications());
+							this.setGoodsOrigin(list.get(0).getGoodsOrigin());
+							this.setMarketPrice(list.get(0).getMarketPrice());
+							this.setPropmPrice(list.get(0).getPropmPrice());
+							this.setSalesPrice(list.get(0).getSalesPrice());
+							this.setQrCode(list.get(0).getQrCode());
+						}
+					});
+
 				}
-			
+
 			}
 		}
-		
-		//param.getGoods().get(0).get
+
+		// param.getGoods().get(0).get
 		return String.valueOf(count);
 	}
 
@@ -214,7 +216,7 @@ public class PriceTagServiceImpl implements PriceTagService {
 		// List<CopyTagTemp> temp = new ArrayList<CopyTagTemp>();
 
 		long st = System.currentTimeMillis();
-		
+
 		try {
 			for (int i = 0; i < tagTemp.size(); i++) {
 				CopyTagTemp copyTagTemp = new CopyTagTemp();

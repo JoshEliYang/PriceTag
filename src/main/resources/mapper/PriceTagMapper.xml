@@ -78,8 +78,8 @@
          
          <select id="selectAllDeletedPriceTags" parameterType="RequestParams" resultType="PriceTag">
          	SELECT * FROM PriceTagInfo WHERE 
-         	<if test="goodsNo != null">
-         		 goodsNo =#{goodsNo} or goodsName =#{goodsNo} AND
+         	<if test="keyWord != ''">
+         		 goodsNo LIKE CONCAT('%','${keyWord}','%' ) or goodsName LIKE CONCAT('%','${keyWord}','%' ) AND
          	</if>
          	 isDelete = 1 LIMIT #{limit} OFFSET #{offset};
          </select>

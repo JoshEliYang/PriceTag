@@ -77,7 +77,11 @@
          </update>
          
          <select id="selectAllDeletedPriceTags" parameterType="RequestParams" resultType="PriceTag">
-         	SELECT * FROM PriceTagInfo WHERE isDelete = 1 LIMIT #{limit} OFFSET #{offset};
+         	SELECT * FROM PriceTagInfo WHERE 
+         	<if test="goodsNo != null">
+         		 goodsNo =#{goodsNo} or goodsName =#{goodsNo} AND
+         	</if>
+         	 isDelete = 1 LIMIT #{limit} OFFSET #{offset};
          </select>
          
          <select id="getTagsAll"  resultType="String">

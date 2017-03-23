@@ -25,6 +25,8 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
          <typeAlias alias="TagNum" type="cn.springmvc.model.TagNum"/>
          <typeAlias alias="CopyTagTemp" type="cn.springmvc.model.CopyTagTemp"/>
          <typeAlias alias="InsertList" type="cn.springmvc.model.InsertList"/>
+         
+         <typeAlias alias="RefrePrcModel" type="cn.springmvc.model.RefrePrcModel"/>
     </typeAliases>
 
     <!-- 映射map -->

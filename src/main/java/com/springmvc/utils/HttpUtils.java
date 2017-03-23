@@ -32,5 +32,19 @@ public class HttpUtils {
 		return response;
 	}
 	
+	public static Map<String, Object> generateResponseCargo(String code,
+			String msg,
+			Object rList,
+			Object fList) {
+		
+		Map<String, Object> response = new HashMap<String, Object>();
+		response.put("code", code);
+		response.put("msg", msg);
+		response.put("rList", rList);
+		response.put("fList", fList);
+		
+		return response;
+	}
+	
 
 }

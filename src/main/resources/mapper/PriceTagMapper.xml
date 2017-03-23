@@ -3,120 +3,151 @@
  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.springmvc.dao.PriceTagDAO">
-    
-         <select id="selectAllPriceTags" resultType="PriceTag">
-          SELECT * FROM PriceTagInfo WHERE isDelete = 0;
-         </select>
-         
-         <insert id="insertPriceTag" parameterType="PriceTag" keyProperty="id">
-			INSERT INTO PriceTagInfo 
-			(`shopId`, `goodsNo`, `goodsName`, `unit`, `specifications`, `goodsOrigin`, 
-			`salesPrice`, `propmPrice`, `marketPrice`, `qrCode`) VALUES 
-			(#{shopId}, 
-			#{goodsNo},
-			 #{goodsName}, 
-			 #{unit}, 
-			 #{specifications}, 
-			 #{goodsOrigin}, 
-			 #{salesPrice}, 
-			 #{propmPrice}, 
-			 #{marketPrice}, 
-			 #{qrCode});
-         </insert>
-     
-         <select id="selectPriceTagsById" parameterType="String" resultType="PriceTag">
-           SELECT * FROM PriceTagInfo WHERE id=#{id};
-         </select>
-         
-         <delete id="deletePriceTag" parameterType="String">
-         	UPDATE PriceTagInfo SET isDelete='1' WHERE id =#{id};
-         </delete>
-         
-         <update id="updatePriceTag" parameterType="PriceTag">
-         	UPDATE PriceTagInfo SET shopId = #{shopId}, goodsNo = #{goodsNo},
-         	goodsName = #{goodsName},unit = #{unit}, specifications = #{specifications},
-         	goodsOrigin = #{goodsOrigin}, salesPrice = #{salesPrice}, propmPrice = #{propmPrice}, 
-         	marketPrice = #{marketPrice} WHERE id = #{id};
-         </update>
-         
-         <select id="selectPriceTagsByParams" parameterType="RequestParams" resultType="PriceTag" >
-         	SELECT * FROM PriceTagInfo WHERE 1 =1 and isDelete = 0 
-         	<if test ="shopId != null">
-         		AND shopId = #{shopId}
-         	</if>
-         	<if test="origin != null">
-         		AND goodsOrigin = #{origin}
-         	</if>
-         	<if test="keyWord != null">
-         		AND goodsName LIKE CONCAT('%','${keyWord}','%' )
-         	</if>
-         	LIMIT #{limit} OFFSET #{offset}
-         	;
-         </select>
-                  
-         <select id="getpriceTagsAll" parameterType="RequestParams" resultType="String" >
-         	SELECT count(*) FROM PriceTagInfo WHERE 1 =1 and isDelete = 0 
-         	<if test ="shopId != null">
-         		AND shopId = #{shopId}
-         	</if>
-         	<if test="origin != null">
-         		AND goodsOrigin = #{origin}
-         	</if>
-         	<if test="keyWord != null">
-         		AND goodsName LIKE CONCAT('%','${keyWord}','%' )
-         	</if>
-         	LIMIT #{limit} OFFSET #{offset}
-         	;
-         </select>        
-          
-         <update id="updatePriceTagByGoodsNo" parameterType="PriceTag">
-            UPDATE PriceTagInfo SET
-         	goodsName = #{goodsName},unit = #{unit}, specifications = #{specifications},
-         	goodsOrigin = #{goodsOrigin}, salesPrice = #{salesPrice}, propmPrice = #{propmPrice}, 
-         	marketPrice = #{marketPrice} WHERE goodsNo = #{goodsNo};
-         </update>
-         
-         <select id="selectAllDeletedPriceTags" parameterType="RequestParams" resultType="PriceTag">
-         	SELECT * FROM PriceTagInfo WHERE isDelete = 1 LIMIT #{limit} OFFSET #{offset};
-         </select>
-         
-         <select id="getTagsAll"  resultType="String">
-         	SELECT count(*) FROM PriceTagInfo WHERE isDelete = 1 ;
-         </select>
-         
-         <update id="rollbackDeletedPriceTag" parameterType="String">
-         	UPDATE PriceTagInfo SET isDelete='0' WHERE id =#{id};
-         </update>
-         
-         <select id="getNoDetail" parameterType="String" resultType="TagNum">
-         	SELECT goodsNo,shopId FROM PriceTagInfo where shopId =#{shopId};
-         </select>
-         
-         <update id="updateTag" parameterType="CopyTagTemp" >
-         	 <!-- <foreach collection="list" item="item" index="index"  separator=";"> -->
-				update PriceTagInfo 
-				<!-- priceTagInfo -->
-				<set>
-				  salesPrice=${salesPrice},propmPrice=${propmPrice},marketPrice=${marketPrice}
-				</set>
-				where goodsNo = '${goodsNo}' and shopId = '${shopId}'
-	   		 <!-- </foreach> -->
-         </update>
-         
-         
-         <select id="checkIfList"  resultType="String">
-         	select  count(*)  from PriceTagInfo   where shopId = #{0} and goodsNo=#{1}  
-         </select>
-         
-         
-          <insert id="insertTagListDelite" parameterType="InsertList" keyProperty="int">
-			INSERT INTO PriceTagInfo  VALUES 
-			(null, 
-			#{tagId},
-			 #{tagname}, 
-			 #{color}, 
-			 #{uncolor}, 
-			 #{basicId});
-         </insert>
-         
+
+	<select id="selectAllPriceTags" resultType="PriceTag">
+		SELECT * FROM
+		PriceTagInfo WHERE isDelete = 0;
+	</select>
+
+	<insert id="insertPriceTag" parameterType="PriceTag"
+		keyProperty="id">
+		INSERT INTO PriceTagInfo
+		(`shopId`, `goodsNo`, `goodsName`,
+		`unit`, `specifications`, `goodsOrigin`,
+		`salesPrice`, `propmPrice`,
+		`marketPrice`, `qrCode`) VALUES
+		(#{shopId},
+		#{goodsNo},
+		#{goodsName},
+		#{unit},
+		#{specifications},
+		#{goodsOrigin},
+		#{salesPrice},
+		#{propmPrice},
+		#{marketPrice},
+		#{qrCode});
+	</insert>
+
+	<select id="selectPriceTagsById" parameterType="String"
+		resultType="PriceTag">
+		SELECT * FROM PriceTagInfo WHERE id=#{id};
+	</select>
+
+	<delete id="deletePriceTag" parameterType="String">
+		UPDATE PriceTagInfo
+		SET isDelete='1' WHERE id =#{id};
+	</delete>
+
+	<update id="updatePriceTag" parameterType="PriceTag">
+		UPDATE PriceTagInfo
+		SET shopId = #{shopId}, goodsNo = #{goodsNo},
+		goodsName =
+		#{goodsName},unit = #{unit}, specifications = #{specifications},
+		goodsOrigin = #{goodsOrigin}, salesPrice = #{salesPrice}, propmPrice =
+		#{propmPrice},
+		marketPrice = #{marketPrice} WHERE id = #{id};
+	</update>
+
+	<select id="selectPriceTagsByParams" parameterType="RequestParams"
+		resultType="PriceTag">
+		SELECT * FROM PriceTagInfo WHERE 1 =1 and isDelete = 0
+		<if test="shopId != null">
+			AND shopId = #{shopId}
+		</if>
+		<if test="origin != null">
+			AND goodsOrigin = #{origin}
+		</if>
+		<if test="keyWord != null">
+			AND goodsName LIKE CONCAT('%','${keyWord}','%' )
+		</if>
+		<if test="limit > 0 ">
+			LIMIT #{limit} OFFSET #{offset}
+		</if>
+		;
+	</select>
+
+	<select id="getpriceTagsAll" parameterType="RequestParams"
+		resultType="String">
+		SELECT count(*) FROM PriceTagInfo WHERE 1 =1 and isDelete = 0
+		<if test="shopId != null">
+			AND shopId = #{shopId}
+		</if>
+		<if test="origin != null">
+			AND goodsOrigin = #{origin}
+		</if>
+		<if test="keyWord != null">
+			AND goodsName LIKE CONCAT('%','${keyWord}','%' )
+		</if>
+		<if test="limit > 0 ">
+			LIMIT #{limit} OFFSET #{offset}
+		</if>
+		;
+	</select>
+
+	<update id="updatePriceTagByGoodsNo" parameterType="PriceTag">
+		UPDATE
+		PriceTagInfo SET
+		goodsName = #{goodsName},unit = #{unit},
+		specifications = #{specifications},
+		goodsOrigin = #{goodsOrigin},
+		salesPrice = #{salesPrice}, propmPrice =
+		#{propmPrice},
+		marketPrice =
+		#{marketPrice} WHERE goodsNo = #{goodsNo};
+	</update>
+
+	<select id="selectAllDeletedPriceTags" parameterType="RequestParams"
+		resultType="PriceTag">
+		SELECT * FROM PriceTagInfo WHERE
+		<if test="keyWord != ''">
+			goodsNo LIKE CONCAT('%','${keyWord}','%' ) or goodsName
+			LIKE
+			CONCAT('%','${keyWord}','%' ) AND
+		</if>
+		isDelete = 1 LIMIT #{limit} OFFSET #{offset};
+	</select>
+
+	<select id="getTagsAll" resultType="String">
+		SELECT count(*) FROM
+		PriceTagInfo WHERE isDelete = 1 ;
+	</select>
+
+	<update id="rollbackDeletedPriceTag" parameterType="String">
+		UPDATE
+		PriceTagInfo SET isDelete='0' WHERE id =#{id};
+	</update>
+
+	<select id="getNoDetail" parameterType="String" resultType="TagNum">
+		SELECT goodsNo,shopId FROM PriceTagInfo where shopId =#{shopId};
+	</select>
+
+	<update id="updateTag" parameterType="CopyTagTemp">
+		<!-- <foreach collection="list" item="item" index="index" separator=";"> -->
+		update PriceTagInfo
+		<!-- priceTagInfo -->
+		<set>
+			salesPrice=${salesPrice},propmPrice=${propmPrice},marketPrice=${marketPrice}
+		</set>
+		where goodsNo = '${goodsNo}' and shopId = '${shopId}'
+		<!-- </foreach> -->
+	</update>
+
+
+	<select id="checkIfList" resultType="String">
+		select count(*) from
+		PriceTagInfo where shopId = #{0} and goodsNo=#{1}
+	</select>
+
+
+	<insert id="insertTagListDelite" parameterType="InsertList"
+		keyProperty="int">
+		INSERT INTO PriceTagInfo VALUES
+		(null,
+		#{tagId},
+		#{tagname},
+		#{color},
+		#{uncolor},
+		#{basicId});
+	</insert>
+
 </mapper>

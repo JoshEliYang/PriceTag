@@ -8,7 +8,8 @@
 	<select id="getGoodsId" resultType="RefrePrcModel">
 		SELECT
 		cargo_num AS cargoNum,
-		goods_no AS goodsNo
+		goods_no AS goodsNo,
+		cargo_id AS CargoId
 		FROM
 		e_goods_cargo a
 		LEFT JOIN e_goods_info b ON

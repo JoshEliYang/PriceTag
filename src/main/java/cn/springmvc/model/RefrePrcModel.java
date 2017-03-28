@@ -3,6 +3,14 @@ package cn.springmvc.model;
 public class RefrePrcModel {
 	String goodsNo;
 	String cargoNum;
+	String CargoId;
+	
+	public String getCargoId() {
+		return CargoId;
+	}
+	public void setCargoId(String cargoId) {
+		CargoId = cargoId;
+	}
 	public String getCargoNum() {
 		return cargoNum;
 	}

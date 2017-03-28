@@ -46,7 +46,7 @@ public class RefrePrcServiceImpl implements RefrePrcService {
 	
 	public int update(List<RefrePrcModel> list) {
 		for(int i = 0; i < list.size(); i ++){
-			reDao.update(list.get(i).getGoodsNo(), "http://g-super.glcp.com.cn/spxq?goodsXq_cid=" + list.get(i).getCargoNum());
+			reDao.update(list.get(i).getGoodsNo(), "http://g-super.glcp.com.cn/gapp/category/goodList/spxq/index.htm?goodsXq_cid=" + list.get(i).getCargoId() + "&cargo_num=" + list.get(i).getCargoNum());
 			System.out.println("成功更新第" + i + "条");
 		}
 		return 0;

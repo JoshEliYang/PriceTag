@@ -8,16 +8,14 @@
 		SELECT
 		goodsNo
 		FROM
-		PriceTagInfo
-		WHERE
-		LENGTH(qrCode) &gt; 50
-		GROUP BY
-		goodsNo
+		PriceTagInfo_copy
+		WHERE 
+		qrCode LIKE ('http://g-super.glcp.com.cn/spxq?%')
 	</select>
 	
 	<update id="update" parameterType="String">
 		UPDATE
-		PriceTagInfo
+		PriceTagInfo_copy
 		SET
 		qrCode = #{1}
 		WHERE goodsNo = #{0}

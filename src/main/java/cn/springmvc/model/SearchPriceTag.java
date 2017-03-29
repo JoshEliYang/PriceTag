@@ -13,6 +13,18 @@ public class SearchPriceTag {
 	private String goodsNo;
 	
 	private String goodsName;
+	
+	private String gcType;
+	
+	
+
+	public String getGcType() {
+		return gcType;
+	}
+
+	public void setGcType(String gcType) {
+		this.gcType = gcType;
+	}
 
 	public String getId() {
 		return id;

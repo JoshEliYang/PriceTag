@@ -168,10 +168,12 @@ public class PriceTagServiceImpl implements PriceTagService {
 					count = count + 1;
 
 					list = searchPriceTagDao.searchListDetail(param.getEcg(), param.getGoods().get(j).getGoodsNo());
-
+					
+					count = count + 0;
+					
 					list.get(0)
 							.setQrCode("http://g-super.glcp.com.cn/gapp/category/goodList/spxq/index.htm?goodsXq_cid="
-									+ list.get(0).getQrCode());
+									+ list.get(0).getQrCode()+"&cargo_num="+list.get(0).getGoodsNum());
 					list.get(0).setUnit(param.getGoods().get(j).getUnit());
 					list.get(0).setSpecifications(param.getGoods().get(j).getSpecifications());
 					list.get(0).setGoodsOrigin(param.getGoods().get(j).getGoodsOrigin());

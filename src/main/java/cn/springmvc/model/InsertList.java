@@ -21,7 +21,20 @@ public class InsertList {
 	
 	private String qrCode;
 	
+	private String goodsNum;
+	
 	private int isDelete;
+
+	
+	
+	
+	public String getGoodsNum() {
+		return goodsNum;
+	}
+
+	public void setGoodsNum(String goodsNum) {
+		this.goodsNum = goodsNum;
+	}
 
 	public String getGoodsNo() {
 		return goodsNo;
@@ -118,9 +131,12 @@ public class InsertList {
 				+ ", specifications=" + specifications + ", goodsOrigin="
 				+ goodsOrigin + ", salesPrice=" + salesPrice + ", propmPrice="
 				+ propmPrice + ", marketPrice=" + marketPrice + ", qrCode="
-				+ qrCode + ", isDelete=" + isDelete + "]";
+				+ qrCode + ", goodsNum=" + goodsNum + ", isDelete=" + isDelete
+				+ "]";
 	}
 
+	
+	
 	public InsertList() {
 		super();
 	}
@@ -128,7 +144,7 @@ public class InsertList {
 	public InsertList(String shopId, String goodsNo, String goodsName,
 			String unit, String specifications, String goodsOrigin,
 			int salesPrice, int propmPrice, int marketPrice, String qrCode,
-			int isDelete) {
+			String goodsNum, int isDelete) {
 		super();
 		this.shopId = shopId;
 		this.goodsNo = goodsNo;
@@ -140,9 +156,9 @@ public class InsertList {
 		this.propmPrice = propmPrice;
 		this.marketPrice = marketPrice;
 		this.qrCode = qrCode;
+		this.goodsNum = goodsNum;
 		this.isDelete = isDelete;
 	}
-
 
 	
 	

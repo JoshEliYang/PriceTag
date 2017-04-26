@@ -7,10 +7,22 @@
 
 	<select id="searchPriceTagInfoByA" parameterType="SelectPriceTag"
 		resultType="SearchPriceTag">
-		select cargo_id as id,cargo_no as goodsNo, market_price as
-		marketPrice, shop_price as salesPrice , purchase_price as propmPrice ,
-		cargo_name as goodsName from e_goods_cargo where cargo_no LIKE
-		CONCAT('%','${goodsNo}','%' ) or cargo_name LIKE
+		SELECT
+	e_goods_cargo.cargo_id AS id,
+	e_goods_cargo.cargo_no AS goodsNo,
+	e_goods_cargo.market_price AS marketPrice,
+	e_goods_cargo.shop_price AS salesPrice,
+	e_goods_info.gc_type AS gcType,
+	e_goods_cargo.purchase_price AS propmPrice,
+	e_goods_cargo.cargo_name AS goodsName
+		FROM
+	e_goods_cargo 
+		INNER JOIN
+	e_goods_info
+		on
+	(e_goods_cargo.goods_id = e_goods_info.goods_id and e_goods_info.gc_type = "ECGC01")
+		where   e_goods_cargo.cargo_no LIKE
+		CONCAT('%','${goodsNo}','%' ) or e_goods_cargo.cargo_name LIKE
 		CONCAT('%','${goodsNo}','%' );
 	</select>
 
@@ -38,7 +50,7 @@
 
 	<select id="searchListDetail" resultType="InsertList">
 		SELECT a.cargo_name as
-		goodsName ,a.cargo_no as goodsNo ,a.market_price as marketPrice
+		goodsName ,a.cargo_no as goodsNo ,a.cargo_num as goodsNum ,a.market_price as marketPrice
 		,a.shop_price as salesPrice,a.purchase_price as propmPrice ,cargo_id
 		as qrCode FROM e_goods_cargo a LEFT JOIN e_goods_info b ON
 		(a.goods_id = b.goods_id) WHERE a.cargo_no = #{1} and b.gc_type=#{0}

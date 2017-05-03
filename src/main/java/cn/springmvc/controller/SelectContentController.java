@@ -25,6 +25,11 @@ public class SelectContentController {
 	@Autowired
 	private SelectService selectService;
 	
+	/**
+	 * 获取产地和门店
+	 * @author summ
+	 * @return
+	 */
 	@ResponseBody
 	@RequestMapping(method=RequestMethod.GET)
 	public Map<String, Object> getAllSelectContent() {
